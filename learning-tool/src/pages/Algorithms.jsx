@@ -11,6 +11,9 @@ const Algorithms = () => {
                         <button >Bubble Sort</button>
                     </Link>
                 </div>
+                <button >
+                    <Link to="/">Back</Link>
+                </button>
             </div>
         </div>
     )
