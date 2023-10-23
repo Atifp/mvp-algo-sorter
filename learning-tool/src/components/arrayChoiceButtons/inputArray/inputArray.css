@@ -1,0 +1,42 @@
+#inputButton {
+    background: rgba(34, 183, 179, 0.94);
+    color: #ffff;
+    padding: 0 30px;
+    min-width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: -moz-fit-content;
+    width: fit-content;
+    border: 0;
+    text-decoration: none;
+    cursor: pointer;
+    margin-right: 20px;
+    margin-left: 10px;
+    font-size: 16px;
+    font-family: "Arial Rounded MT Bold";
+}
+
+#clearArrayButton {
+    background: rgba(224, 8, 15, 0.94);
+    color: #fff;
+    padding: 0 30px;
+    min-width: 5px;
+    height: 30px;
+    border-radius: 10px;
+    width: -moz-fit-content;
+    width: fit-content;
+    border: 0;
+    cursor: pointer;
+    margin-right: 20px;
+    margin-left: 10px;
+    font-size: 16px;
+    font-family: "Arial Rounded MT Bold";
+}
+
+#inputArrayForm {
+    padding: 5px;
+}
