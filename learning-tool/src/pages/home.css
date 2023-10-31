@@ -1,0 +1,18 @@
+.title {
+    font-family: 'Oxygen', monospace, Courier;
+    color: white;
+    font-size: 110px;
+}
+
+.collectedTitle {
+    white-space: pre-line;
+    display: inline-flex;
+    top: 24%;
+    left: 36%;
+    padding-right: 15px;
+    letter-spacing: 5px;
+    position: absolute;
+    text-align: right;
+    font-weight: bold;
+    border-right: 4px solid #d17f3f;
+}

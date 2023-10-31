@@ -1,6 +1,6 @@
 import InputArray from '../components/arrayChoiceButtons/inputArray/inputArray'
 import {useEffect, useState} from 'react'
-import ArrayVisualizer from "../components/arrayChoiceButtons/ArrayVisualizer";
+import ArrayVisualizer from "../components/ArrayVisualizer";
 import {Link} from "react-router-dom";
 import GenerateArray from '../components/arrayChoiceButtons/generateArray/generateArray'
 import SelectArray from '../components/arrayChoiceButtons/selectArray/selectArray'
@@ -9,6 +9,8 @@ import BarChart from '../components/BarChart'
 
 const BubbleSort = () => {
     const [array, setArray] = useState([]);
+    const [showGraph, setShowGraph] = useState(false);
+
     const [chartKey, setChartKey] = useState(0) // this forces the chart to re-render everytime the array changes
     const [sortIndex, setSortIndex] = useState([])
     const [barColor, setBarColor] = useState("")
@@ -63,17 +65,16 @@ const BubbleSort = () => {
         return myArray;
     }
 
-    useEffect(() => {
-        const steps = calculateBubbleSteps();
-        setAlgoSteps(steps);
-    }, [array]);
+    function checkArraySize () {
+        if (arraySize >= 5){
+            setShowGraph(true)
+        }else {
+            setShowGraph(false)
+        }
+        setArraySize(array.length)
+    }
 
-    useEffect(() => {
-        // Update the chartKey whenever the array changes
-        setChartKey((prevKey) => prevKey + 1);
-        setDataArray(array);
-    }, [array])
-
+    //TODO Figure out how to add this in
     function handleOnclick() {
         let currentIndex = 0
         let loopInterval
@@ -110,6 +111,22 @@ const BubbleSort = () => {
         setArray(arrayToSort)
     }
 
+    useEffect(() => {
+        const steps = calculateBubbleSteps();
+        setAlgoSteps(steps);
+    }, [array]);
+
+    useEffect(() => {
+        // Update the chartKey whenever the array changes
+        setChartKey((prevKey) => prevKey + 1);
+        setDataArray(array);
+    }, [array])
+
+    // this checks the size of the array, and only shows the tab when the array is a certain size
+    useEffect(() => {
+        checkArraySize();
+    }, [array]);
+
     return (
         <div>
             <h1 className='title'>Bubble Sort</h1>
@@ -127,13 +144,17 @@ const BubbleSort = () => {
             <div className="visualAlgo">
                 <ArrayVisualizer fullArray={array}></ArrayVisualizer>
             </div>
-            <button onClick={bubbleSort}>Sort</button>
-            <button>
-                <Link to="/algorithms">Back</Link>
-            </button>
-            <div className="chart">
-                <BarChart data={dataArray} key={chartKey} sortIndex={sortIndex} barColour={barColor}/>
+            <div className="buttons">
+                <button onClick={handleOnclick}>Sort</button>
+                <button>
+                    <Link to="/algorithms">Back</Link>
+                </button>
             </div>
+            {showGraph &&
+                <div className="chart">
+                    <BarChart data={dataArray} key={chartKey} sortIndex={sortIndex} barColour={barColor}/>
+                </div>
+            }
         </div>
     );
 };

@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
 import "../index.css"
-//import HomeButton from '../buttons/homeButton'
+import HomeButton from '../components/buttons/homeButton'
 const Layout = () => {
     return(
         <>
-            {/*<div className="header">*/}
-            {/*    <HomeButton></HomeButton>*/}
-            {/*</div>*/}
+            <div className="header">
+                <HomeButton></HomeButton>
+            </div>
             <Outlet />
         </>
     )

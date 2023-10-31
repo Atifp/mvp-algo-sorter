@@ -1,4 +1,5 @@
 import React from 'react';
+import './arrayVisualiser.css'
 
 function ArrayVisualizer({ fullArray }) {
     let arrayString = fullArray[0]
@@ -6,7 +7,11 @@ function ArrayVisualizer({ fullArray }) {
         arrayString = arrayString + " , " + fullArray[i]
     }
     return (
-        <div> Array to be sorted:  [ {arrayString} ] </div>
+        <div>
+            <div className='array'>
+                Array to be sorted:  [ {arrayString} ] Elements: {fullArray.length}
+            </div>
+        </div>
     );
 }
 

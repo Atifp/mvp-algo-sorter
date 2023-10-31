@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import './inputArray.css';
+import ClearArray from '../clearArray/clearArray'
 
 function InputArray({ array, setArray, setArraySize }) {
     const [showDropdown, setShowDropdown] = useState(false)
@@ -12,22 +13,16 @@ function InputArray({ array, setArray, setArraySize }) {
         setShowDropdown(!showDropdown)
     };
 
-    const clearArray = () => {
-        setArray([])
-        setArraySize(0)
-    };
-
     return (
         <div className="App">
-            <button id="inputButton" onClick={toggleDropdown}>
+            <button className="myInputButton" onClick={toggleDropdown}>
                 Input Array
             </button>
             {showDropdown && (
-                <div id="inputArrayForm">
-                    <div>
-                        <label htmlFor="arraySize">Enter the values for the array:</label>
-                        <input type="text" id="arrayInput" value={array.join(',')} onChange={handleArrayChange} />
-                        <button onClick={clearArray} id="clearArrayButton">clear</button>
+                <div className="inputArrayForm">
+                    <div style={{ display: 'flex', alignItems: 'center'}}>
+                        <input type="text" value={array.join(',')} onChange={handleArrayChange} className="inputArray" />
+                        <ClearArray setArray={setArray} setArraySize={setArraySize} ></ClearArray>
                     </div>
                 </div>
             )}

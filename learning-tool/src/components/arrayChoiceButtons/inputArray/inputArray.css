@@ -1,4 +1,4 @@
-#inputButton {
+.myInputButton {
     background: rgba(34, 183, 179, 0.94);
     color: #ffff;
     padding: 0 30px;
@@ -15,28 +15,26 @@
     text-decoration: none;
     cursor: pointer;
     margin-right: 20px;
-    margin-left: 10px;
-    font-size: 16px;
-    font-family: "Arial Rounded MT Bold";
+    margin-left: 60px;
+    margin-bottom: 20px;
+    font-size: 25px;
+    font-family: 'Oxygen', monospace, Courier;
 }
 
-#clearArrayButton {
-    background: rgba(224, 8, 15, 0.94);
-    color: #fff;
-    padding: 0 30px;
-    min-width: 5px;
+.inputArrayForm {
+    display: flex;
+    justify-content: space-between;
+}
+
+.inputArray{
+    border: none;
+    border-bottom: 2px solid red;
+    color: white;
+    background: none;
+    width: 400px;
     height: 30px;
-    border-radius: 10px;
-    width: -moz-fit-content;
-    width: fit-content;
-    border: 0;
-    cursor: pointer;
-    margin-right: 20px;
-    margin-left: 10px;
+    font-weight: bold;
+    font-family: 'Oxygen', monospace, Courier;
     font-size: 16px;
-    font-family: "Arial Rounded MT Bold";
-}
-
-#inputArrayForm {
-    padding: 5px;
+    margin-right: 20px;
 }

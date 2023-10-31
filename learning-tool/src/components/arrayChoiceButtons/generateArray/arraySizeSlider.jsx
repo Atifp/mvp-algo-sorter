@@ -6,10 +6,9 @@ function ArraySizeSlider({ value, onChange, min, max }) {
         onChange(value);
     };
     return (
-        <div className='ArraySizeSlider'>
-            <input
+        <div >
+            <input className='arraySizeSlider'
                 type="range"
-                id="array-size"
                 min={min}
                 max={max}
                 value={value}

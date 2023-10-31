@@ -32,18 +32,17 @@ function GenerateArray({ array, setArray, setNewArraySize}) {
 
 
     return (
-        <div className="App">
-            <button id="generateArrayButton" onClick={toggleDropdown} className="generateArrayButton">
+        <div >
+            <button onClick={toggleDropdown} className="generateArrayButton">
                 Generate Array
             </button>
             {showDropdown && (
-                <div id="generateArrayForm">
+                <div className="generateArrayForm">
                     <div>
-                        <div className='sliderInfo' style={{ display: 'flex', alignItems: 'center' }}>
+                        <div style={{ display: 'flex', alignItems: 'center' }}>
                             <ArraySizeSlider value={arraySize} onChange={handleArraySize} min={"5"} max={"30"} style={{ marginRight: '10px' }} />
                             <button onClick={() => generateArray()} className="generateRandomArrayButton">Change Values</button>
                         </div>
-                        <h3> Elements: {arraySize}</h3>
                     </div>
                 </div>
             )}

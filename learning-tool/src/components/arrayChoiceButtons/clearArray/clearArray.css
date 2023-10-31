@@ -1,0 +1,17 @@
+.myClearArrayButton {
+    display: inline-flex;
+    background: rgba(224, 8, 15, 0.94);
+    color: #fff;
+    padding: 0 30px;
+    min-width: 5px;
+    height: 30px;
+    border-radius: 10px;
+    width: -moz-fit-content;
+    width: fit-content;
+    border: 0;
+    cursor: pointer;
+    margin-right: 20px;
+    margin-left: 10px;
+    font-size: 20px;
+    font-family: 'Oxygen', monospace, Courier;
+}

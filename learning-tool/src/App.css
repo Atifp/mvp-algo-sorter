@@ -1,9 +1,10 @@
 .title {
   text-align: center;
+  color: white;
 }
 
 .inputButton {
-  top: 10%;
+  top: 30%;
   left: 5%;
   display: inline-flex;
   position: absolute;
@@ -12,7 +13,7 @@
 .generate {
   position: absolute;
   display: inline-flex;
-  top: 10%;
+  top: 30%;
   left: 45%;
 }
 
@@ -29,6 +30,13 @@
 .select {
   position: absolute;
   display: inline-flex;
-  top: 10%;
+  top: 30%;
   right: 5%;
+}
+
+.chart {
+  width: 1200px;
+  height: 400px;
+  animation: none;
+  float: left;
 }
