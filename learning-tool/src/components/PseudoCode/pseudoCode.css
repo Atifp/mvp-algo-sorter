@@ -1,0 +1,22 @@
+.PseudoCode {
+    right: 5%;
+    top: 50%;
+    position: absolute;
+    float: right;
+    font-size: 30px;
+    border: 2px solid purple; /* Combined border shorthand */
+    border-radius: 10px; /* Adjust the radius as needed */
+    color: white;
+    font-family: 'Oxygen', monospace, Courier;
+    padding-right: 15px; /* Add padding for margin between content and border */
+    padding-left: 15px;
+}
+
+.PseudoCode p {
+    white-space: pre-wrap;
+}
+
+.Highlight {
+    background-color: yellow;
+    color: #282c34;
+}

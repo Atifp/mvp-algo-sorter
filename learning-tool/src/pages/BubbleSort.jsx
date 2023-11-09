@@ -1,16 +1,18 @@
 import InputArray from '../components/arrayChoiceButtons/inputArray/inputArray'
 import {useEffect, useState} from 'react'
-import ArrayVisualizer from "../components/ArrayVisualizer";
+import ArrayVisualizer from "../components/ArrayVisualizer/ArrayVisualizer";
 import {Link} from "react-router-dom";
 import GenerateArray from '../components/arrayChoiceButtons/generateArray/generateArray'
 import SelectArray from '../components/arrayChoiceButtons/selectArray/selectArray'
 import '../App.css'
+import './bubbleSort.css'
 import BarChart from '../components/BarChart'
+import PseudoCodeBubble from '../components/PseudoCode/PseudoCodeBubble'
 
 const BubbleSort = () => {
     const [array, setArray] = useState([]);
     const [showGraph, setShowGraph] = useState(false);
-
+    const [pseudoLine, setPseudoLine] =  useState([])
     const [chartKey, setChartKey] = useState(0) // this forces the chart to re-render everytime the array changes
     const [sortIndex, setSortIndex] = useState([])
     const [barColor, setBarColor] = useState("")
@@ -85,7 +87,7 @@ const BubbleSort = () => {
                 setBarColor(currentStep.barColor)
                 //setAlgoDescription(currentStep.algoDescription)
                 setSortIndex(currentStep.arrayOfBars)
-                //setPseudoLine(currentStep.pseudoLine)
+                setPseudoLine(currentStep.pseudoLine)
                 currentStep.completedStep = true
                 currentIndex++
             } else {
@@ -129,7 +131,7 @@ const BubbleSort = () => {
 
     return (
         <div>
-            <h1 className='title'>Bubble Sort</h1>
+            <h1 className='bubbleTitle'>Bubble Sort</h1>
             <div className="buttons">
                 <div className="inputButton">
                     <InputArray array={array} setArray={setArray} setArraySize={setArraySize}></InputArray>
@@ -151,8 +153,13 @@ const BubbleSort = () => {
                 </button>
             </div>
             {showGraph &&
-                <div className="chart">
-                    <BarChart data={dataArray} key={chartKey} sortIndex={sortIndex} barColour={barColor}/>
+                <div >
+                    <div className="chart">
+                        <BarChart data={dataArray} key={chartKey} sortIndex={sortIndex} barColour={barColor}/>
+                    </div>
+                    <div>
+                        <PseudoCodeBubble lineToHighlight={pseudoLine}></PseudoCodeBubble>
+                    </div>
                 </div>
             }
         </div>

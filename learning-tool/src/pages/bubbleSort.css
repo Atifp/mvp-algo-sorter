@@ -1,0 +1,8 @@
+.bubbleTitle {
+    font-family: 'Oxygen', monospace, Courier;
+    color: white;
+    font-size: 110px;
+    position: absolute;
+    top: 7%;
+    left: 30%;
+}
