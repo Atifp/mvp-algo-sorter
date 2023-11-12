@@ -38,5 +38,7 @@
   width: 1200px;
   height: 400px;
   animation: none;
-  float: left;
+  top: 55%;
+  left: 1%;
+  position: absolute;
 }

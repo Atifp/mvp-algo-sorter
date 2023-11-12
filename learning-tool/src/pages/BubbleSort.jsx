@@ -11,7 +11,9 @@ import PseudoCodeBubble from '../components/PseudoCode/PseudoCodeBubble'
 
 const BubbleSort = () => {
     const [array, setArray] = useState([]);
+    const [initialArray, setInitialArray] = useState([]);
     const [showGraph, setShowGraph] = useState(false);
+    const [showReset, setShowReset] = useState(false);
     const [pseudoLine, setPseudoLine] =  useState([])
     const [chartKey, setChartKey] = useState(0) // this forces the chart to re-render everytime the array changes
     const [sortIndex, setSortIndex] = useState([])
@@ -76,42 +78,64 @@ const BubbleSort = () => {
         setArraySize(array.length)
     }
 
-    //TODO Figure out how to add this in
-    function handleOnclick() {
+    function sortArrayFully() {
         let currentIndex = 0
         let loopInterval
         loopInterval = setInterval(() => {
             if (currentIndex< algoSteps.length) {
-                const currentStep = algoSteps[currentIndex]
-                setArray(currentStep.newArray)
-                setBarColor(currentStep.barColor)
+                const currentStep = algoSteps[currentIndex];
+                setArray(currentStep.newArray);
+                setBarColor(currentStep.barColor);
                 //setAlgoDescription(currentStep.algoDescription)
-                setSortIndex(currentStep.arrayOfBars)
-                setPseudoLine(currentStep.pseudoLine)
-                currentStep.completedStep = true
-                currentIndex++
+                setSortIndex(currentStep.arrayOfBars);
+                setPseudoLine(currentStep.pseudoLine);
+                currentStep.completedStep = true;
+                currentIndex++;
             } else {
                 clearInterval(loopInterval)
+                setShowReset(true)
             }
         }, 500)
     }
-    function bubbleSort() {
-        const arrayToSort = [...array]
-        const n = array.length;
 
-        for (let i = 0; i < n - 1; i++) {
-            for (let j = 0; j < n - 1 - i; j++) {
-                // Compare adjacent elements
-                if (arrayToSort[j] > arrayToSort[j + 1]) {
-                    // Swap them
-                    const temp = arrayToSort[j];
-                    arrayToSort[j] = arrayToSort[j + 1];
-                    arrayToSort[j + 1] = temp;
+    const stepThroughSorting = async (loop) => {
+        for (let i=0;i<algoSteps.length;i++){
+            const currentStep = algoSteps[i];
+            if (currentStep.completedStep === false) {
+                setDataArray(currentStep.newArray);
+                setBarColor(currentStep.barColor);
+                //setAlgoDescription(currentStep.algoDescription);
+                setSortIndex(currentStep.arrayOfBars);
+                setPseudoLine(currentStep.pseudoLine);
+                currentStep.completedStep = true;
+                if (!loop) {
+                    break;
                 }
             }
+            if (currentStep.pseudoLine[0] === 6){
+                setShowReset(true)
+            }
         }
-        setArray(arrayToSort)
+    };
+
+    function resetArray() {
+        for(let i=0; i< algoSteps.length;i++) {
+            const currentStep = algoSteps[i];
+            if (currentStep.completedStep === true) {
+                currentStep.completedStep = false;
+            }
+        }
+        const initialStep = algoSteps[0];
+        setSortIndex(initialStep.arrayOfBars);
+        setDataArray(initialArray);
+        setArray(initialArray);
+        //setAlgoDescription(initialStep.algoDescription);
+        setBarColor(initialStep.barColor);
+        setPseudoLine(initialStep.pseudoLine);
+        initialStep.completedStep = true;
+        setShowReset(false)
     }
+
 
     useEffect(() => {
         const steps = calculateBubbleSteps();
@@ -134,20 +158,19 @@ const BubbleSort = () => {
             <h1 className='bubbleTitle'>Bubble Sort</h1>
             <div className="buttons">
                 <div className="inputButton">
-                    <InputArray array={array} setArray={setArray} setArraySize={setArraySize}></InputArray>
+                    <InputArray array={array} setArray={setArray} setArraySize={setArraySize} setInitialArray={setInitialArray}></InputArray>
                 </div>
                 <div className="generate">
-                    <GenerateArray array={array} setArray={setArray} setNewArraySize={setArraySize}></GenerateArray>
+                    <GenerateArray array={array} setArray={setArray} setNewArraySize={setArraySize} setInitialArray={setInitialArray}></GenerateArray>
                 </div>
                 <div className="select">
-                    <SelectArray setArray={setArray} setArraySize={setArraySize} ></SelectArray>
+                    <SelectArray setArray={setArray} setArraySize={setArraySize} setInitialArray={setInitialArray}></SelectArray>
                 </div>
             </div>
             <div className="visualAlgo">
                 <ArrayVisualizer fullArray={array}></ArrayVisualizer>
             </div>
             <div className="buttons">
-                <button onClick={handleOnclick}>Sort</button>
                 <button>
                     <Link to="/algorithms">Back</Link>
                 </button>
@@ -156,6 +179,9 @@ const BubbleSort = () => {
                 <div >
                     <div className="chart">
                         <BarChart data={dataArray} key={chartKey} sortIndex={sortIndex} barColour={barColor}/>
+                        <button onClick={sortArrayFully}>Sort</button>
+                        <button onClick= {() => stepThroughSorting(false)} >Step</button>
+                        {showReset && <button onClick={resetArray}> Reset Array</button>}
                     </div>
                     <div>
                         <PseudoCodeBubble lineToHighlight={pseudoLine}></PseudoCodeBubble>

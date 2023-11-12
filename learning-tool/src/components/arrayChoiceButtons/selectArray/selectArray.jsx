@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import './selectArray.css';
 
-function SelectArray({setArray, setArraySize}) {
+function SelectArray({setArray, setArraySize, setInitialArray}) {
     const [showDropdown, setShowDropdown] = useState(false);
     const [stringArray, setStringArray] = useState("");
     const handleArrayChange = (event) => {
         const newArray = event.target.value.split(',').map(Number); // Convert string input to array of numbers
         setStringArray(event.target.value);
         setArray(newArray);
+        setInitialArray(newArray);
         setArraySize(newArray.length);
     };
     const toggleDropdown = () => {

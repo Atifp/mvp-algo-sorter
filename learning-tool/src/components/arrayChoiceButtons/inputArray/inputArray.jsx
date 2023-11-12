@@ -1,13 +1,14 @@
-import React, {useEffect, useState} from 'react'
+import React, { useState} from 'react'
 import './inputArray.css';
 import ClearArray from '../clearArray/clearArray'
 
-function InputArray({ array, setArray, setArraySize }) {
+function InputArray({ array, setArray, setArraySize, setInitialArray }) {
     const [showDropdown, setShowDropdown] = useState(false)
     const handleArrayChange = (event) => {
         const newArray = event.target.value.split(',').map(Number) // Convert string input to array of numbers
         setArray(newArray)
         setArraySize(array.length)
+        setInitialArray(newArray)
     };
     const toggleDropdown = () => {
         setShowDropdown(!showDropdown)
