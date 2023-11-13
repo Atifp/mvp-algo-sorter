@@ -17,13 +17,12 @@ function SelectArray({setArray, setArraySize, setInitialArray}) {
 
     return (
         <div>
-            <button onClick={toggleDropdown} id={ 'selectButton'} className={`selectArrayButton`}>
+            <button onClick={toggleDropdown} className="selectArrayButton">
                 Select Array
             </button>
             {showDropdown && (
-                <div id="dropdownForm" style={{ display: 'flex', alignItems: 'center' }}>
-                    <h3 htmlFor="arraySize" style={{ display: 'flex', fontSize: 12}}>Choose Array: </h3>
-                    <select id="arraySize" value={stringArray} onChange={handleArrayChange} >
+                <div className="dropDownMenu">
+                    <select  value={stringArray} onChange={handleArrayChange} >
                         <option value=" ">empty</option>
                         <option value="35,30,27,22,20,17,15,13,10,5">low to high</option>
                         <option value="50">50</option>
