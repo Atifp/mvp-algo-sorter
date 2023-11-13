@@ -8,19 +8,21 @@ import '../App.css'
 import './bubbleSort.css'
 import BarChart from '../components/BarChart'
 import PseudoCodeBubble from '../components/PseudoCode/PseudoCodeBubble'
+import Description from '../components/Description/Description'
 
 const BubbleSort = () => {
     const [array, setArray] = useState([]);
     const [initialArray, setInitialArray] = useState([]);
     const [showGraph, setShowGraph] = useState(false);
     const [showReset, setShowReset] = useState(false);
-    const [pseudoLine, setPseudoLine] =  useState([])
-    const [chartKey, setChartKey] = useState(0) // this forces the chart to re-render everytime the array changes
-    const [sortIndex, setSortIndex] = useState([])
-    const [barColor, setBarColor] = useState("")
+    const [pseudoLine, setPseudoLine] =  useState([]);
+    const [chartKey, setChartKey] = useState(0); // this forces the chart to re-render everytime the array changes
+    const [sortIndex, setSortIndex] = useState([]);
+    const [barColor, setBarColor] = useState("");
     const [algoSteps, setAlgoSteps] = useState([]);
-    const [arraySize, setArraySize] = useState(0)
+    const [arraySize, setArraySize] = useState(0);
     const [dataArray, setDataArray] = useState(array);
+    const [algoDescription, setAlgoDescription] = useState("")
 
 
     const createStep = (stepNumber, arrayOfBars, newArray, algoDescription, pseudoLine, barColor) => {
@@ -86,7 +88,7 @@ const BubbleSort = () => {
                 const currentStep = algoSteps[currentIndex];
                 setArray(currentStep.newArray);
                 setBarColor(currentStep.barColor);
-                //setAlgoDescription(currentStep.algoDescription)
+                setAlgoDescription(currentStep.algoDescription)
                 setSortIndex(currentStep.arrayOfBars);
                 setPseudoLine(currentStep.pseudoLine);
                 currentStep.completedStep = true;
@@ -104,7 +106,7 @@ const BubbleSort = () => {
             if (currentStep.completedStep === false) {
                 setDataArray(currentStep.newArray);
                 setBarColor(currentStep.barColor);
-                //setAlgoDescription(currentStep.algoDescription);
+                setAlgoDescription(currentStep.algoDescription);
                 setSortIndex(currentStep.arrayOfBars);
                 setPseudoLine(currentStep.pseudoLine);
                 currentStep.completedStep = true;
@@ -129,7 +131,7 @@ const BubbleSort = () => {
         setSortIndex(initialStep.arrayOfBars);
         setDataArray(initialArray);
         setArray(initialArray);
-        //setAlgoDescription(initialStep.algoDescription);
+        setAlgoDescription(initialStep.algoDescription);
         setBarColor(initialStep.barColor);
         setPseudoLine(initialStep.pseudoLine);
         initialStep.completedStep = true;
@@ -170,24 +172,31 @@ const BubbleSort = () => {
             <div className="visualAlgo">
                 <ArrayVisualizer fullArray={array}></ArrayVisualizer>
             </div>
-            <div className="buttons">
-                <button>
+            <div >
+                <button  className="backButton" >
                     <Link to="/algorithms">Back</Link>
                 </button>
             </div>
-            {showGraph &&
-                <div >
+            {showGraph && (
+                <div className="chart-container">
                     <div className="chart">
-                        <BarChart data={dataArray} key={chartKey} sortIndex={sortIndex} barColour={barColor}/>
-                        <button onClick={sortArrayFully}>Sort</button>
-                        <button onClick= {() => stepThroughSorting(false)} >Step</button>
-                        {showReset && <button onClick={resetArray}> Reset Array</button>}
+                        <BarChart data={dataArray} key={chartKey} sortIndex={sortIndex} barColour={barColor} />
                     </div>
-                    <div>
-                        <PseudoCodeBubble lineToHighlight={pseudoLine}></PseudoCodeBubble>
+                    <div className="content-container">
+                        <div className="controlButtons">
+                            <button onClick={sortArrayFully}>Sort</button>
+                            <button onClick={() => stepThroughSorting(false)}>Step</button>
+                            {showReset && <button onClick={resetArray}>Reset Array</button>}
+                        </div>
+                        <div>
+                            <Description description={algoDescription} />
+                        </div>
+                        <div>
+                            <PseudoCodeBubble lineToHighlight={pseudoLine}></PseudoCodeBubble>
+                        </div>
                     </div>
                 </div>
-            }
+            )}
         </div>
     );
 };

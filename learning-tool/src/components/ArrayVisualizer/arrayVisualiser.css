@@ -2,9 +2,5 @@
     font-family: 'Oxygen', monospace, Courier;
     color: white;
     font-weight: bold;
-    margin-left: 10px;
-    font-size: 22px;
-    top: 40%;
-    display: flex;
-    position: absolute;
+    font-size: 18px;
 }
