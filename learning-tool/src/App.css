@@ -88,3 +88,25 @@
   top: 93%;
   right: 15%;
 }
+
+.infoSection {
+  font-family: 'Ubuntu', monospace, Courier;
+  position: relative;
+  width: 100%;
+  margin-top: 60%;
+  padding-top: 25px;
+  min-height: 100vh;
+  display: block;
+  overflow: auto;
+  color: white;
+  background: black;
+  word-wrap: normal;
+}
+
+.box {
+  position: absolute;
+  left: 5%;
+  font-size: 25px;
+  max-width: 600px;
+  position: relative;
+}

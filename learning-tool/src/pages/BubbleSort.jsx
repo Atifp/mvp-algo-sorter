@@ -195,6 +195,15 @@ const BubbleSort = () => {
                             <PseudoCodeBubble lineToHighlight={pseudoLine}></PseudoCodeBubble>
                         </div>
                     </div>
+                    <div className="infoSection">
+                        <div className="box">
+                            <h2> Bubble Sort</h2>
+                            <p>Time Complexity: O(n2) </p>
+                            <p>Description: </p>
+                            <p>I'm trying to see what happens with this page</p>
+                            <p>Testing all of it</p>
+                        </div>
+                    </div>
                 </div>
             )}
         </div>
