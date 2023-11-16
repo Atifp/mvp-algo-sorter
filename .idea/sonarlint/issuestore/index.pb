@@ -1,7 +1,31 @@
 
 y
-Ilearning-tool/src/components/arrayChoiceButtons/inputArray/inputArray.jsx,8/0/80d51f56a8a081b004c90e6e8d229ddb60817991
-{
-Klearning-tool/src/components/arrayChoiceButtons/selectArray/selectArray.jsx,f/0/f0149930a97618f28db714c82cb8d9a9e2d9cc3b
-y
 Ilearning-tool/src/components/arrayChoiceButtons/clearArray/clearArray.jsx,b/a/ba1c3dc133fc1c765b390581d0d2333d39d2d4cb
+M
+learning-tool/src/App.test.js,f/0/f0e42cfe0627d5d031f85755c9ee0879f51193e8
+y
+Ilearning-tool/src/components/arrayChoiceButtons/clearArray/clearArray.css,b/e/be5a43b30caaf60fcb9b6882db53744efa634718
+K
+learning-tool/src/index.css,e/1/e1371922a304f88afc2e8a9a3bfbaf15bde931fb
+V
+&learning-tool/src/pages/Algorithms.jsx,1/0/10f226d41f072d4adc35e4667325beae71c10fba
+K
+learning-tool/src/index.jsx,6/e/6e9fcc4dd53801dfad18ce69dd0ec4ad16f008b3
+
+Olearning-tool/src/components/arrayChoiceButtons/generateArray/generateArray.css,7/4/74bd45bda1fd1c6a5c95633906e1131d81d7fbbf
+
+Olearning-tool/src/components/arrayChoiceButtons/generateArray/generateArray.jsx,4/a/4a586dc7450d56eb8508ec0b6a1706fecd310fc1
+l
+<learning-tool/src/components/PseudoCode/PseudoCodeBubble.jsx,3/0/305f3e14845cf115bd186cf82f6b6ebc24742dc2
+y
+Ilearning-tool/src/components/arrayChoiceButtons/inputArray/inputArray.jsx,8/0/80d51f56a8a081b004c90e6e8d229ddb60817991
+R
+"learning-tool/src/pages/Layout.jsx,b/4/b4c0656e03a129a62ab5366bac89151374fb6e9d
+h
+8learning-tool/src/components/Description/Description.jsx,8/4/84c976dc44f454123bcf39c8e349883aa5368645
+P
+ learning-tool/src/pages/home.css,a/f/af6a76d0c8c120f7ddc038dbfe53cdbee7133c64
+P
+ learning-tool/src/pages/Home.jsx,8/f/8f10ac5da66577f068da3fe47ff4f65042bea46c
+c
+3learning-tool/src/components/buttons/homeButton.css,b/a/ba675c6fbdf4cb0c472393be2f571d89dba33c9d

@@ -15,8 +15,10 @@
     text-decoration: none;
     cursor: pointer;
     margin-right: 20px;
-    margin-left: 10px;
+    margin-left: 60px;
+    margin-bottom: 20px;
     font-size: 25px;
+    font-weight: bold;
     font-family: 'Oxygen', monospace, Courier;
 }
 .selectArrayButton.disabled {
@@ -24,6 +26,18 @@
     cursor: not-allowed;
 }
 
-#selectArrayForm {
-    padding: 10px;
+.dropDownMenu {
+    position: relative;
+    text-align: center; /* To center the dropdown */
+}
+
+select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    min-width: 150px; /* Adjust width as needed */
+    background: none;
+    color: white;
+    font-weight: bold;
 }

@@ -2,27 +2,28 @@ import React, {useEffect, useState} from 'react'
 import './generateArray.css';
 import ArraySizeSlider from './arraySizeSlider'
 
-function GenerateArray({ array, setArray, setNewArraySize}) {
+function GenerateArray({ array, setArray, setNewArraySize, setInitialArray}) {
     const [showDropdown, setShowDropdown] = useState(false);
     const [arraySize, setArraySize] = useState(array.length);
     const generateArray = () => {
-        const randArray = []
+        const randArray = [];
         while(randArray.length < arraySize) {
-            const num = Math.floor(Math.random()*100)
+            const num = Math.floor(Math.random()*100);
             if (randArray.indexOf(num) === -1) {
-                randArray.push(num)
+                randArray.push(num);
             }
         }
-        setArray(randArray)
-        return array
+        setArray(randArray);
+        setInitialArray(randArray);
+        return array;
     };
     const toggleDropdown = () => {
         setShowDropdown(!showDropdown)
     };
 
     const handleArraySize = (value) => {
-        setArraySize(value)
-        setNewArraySize(value)
+        setArraySize(value);
+        setNewArraySize(value);
     };
 
     // this generates a new array depending on the change in the slider
