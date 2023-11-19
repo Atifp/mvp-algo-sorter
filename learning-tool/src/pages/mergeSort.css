@@ -1,0 +1,42 @@
+.chart {
+    margin: auto;
+    width: 800px;
+    height: 400px;
+    animation: none;
+    top: 33%;
+    left: 1%;
+    position: absolute;
+}
+
+.mergeTitle {
+    font-family: 'Oxygen', monospace, Courier;
+    color: white;
+    font-size: 50px;
+    position: absolute;
+    top: 0%;
+    left: 45%;
+    margin-top: 10px;
+}
+
+.backButton {
+    position: absolute;
+    top: 1%;
+    right: 1%;
+}
+
+.controlButtons {
+    display: flex;
+    gap: 10px; /* Adjust this value to change the spacing */
+    justify-content: center;
+    position: absolute;
+    top: 10%;
+    left: 40%;
+}
+
+.button-container {
+    justify-content: space-evenly;
+    display: flex;
+    width:100%;
+    position: absolute;
+    top: 17%;
+}

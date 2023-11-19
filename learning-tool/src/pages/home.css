@@ -1,7 +1,18 @@
+@keyframes sortAnimation {
+    0% {
+        transform: scaleX(0);
+    }
+    100% {
+        transform: scaleX(1);
+    }
+}
+
 .mainTitle {
     font-family: 'Oxygen', monospace, Courier;
     color: white;
     font-size: 110px;
+    transform-origin: left;
+    animation: sortAnimation 1.5s ease-out; /* Adjust the duration and timing function as needed */
 }
 
 .collectedTitle {
@@ -15,6 +26,7 @@
     text-align: right;
     font-weight: bold;
     border-right: 4px solid #d17f3f;
+    overflow: hidden; /* Ensure the border doesn't get cut off */
 }
 
 .sortingAlgoButton {

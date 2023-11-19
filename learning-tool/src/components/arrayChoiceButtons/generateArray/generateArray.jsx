@@ -8,7 +8,7 @@ function GenerateArray({ array, setArray, setNewArraySize, setInitialArray}) {
     const generateArray = () => {
         const randArray = [];
         while(randArray.length < arraySize) {
-            const num = Math.floor(Math.random()*100);
+            const num = Math.floor(Math.random()* (300 - 24 + 1) + 24);
             if (randArray.indexOf(num) === -1) {
                 randArray.push(num);
             }
@@ -41,7 +41,7 @@ function GenerateArray({ array, setArray, setNewArraySize, setInitialArray}) {
                 <div className="generateArrayForm">
                     <div>
                         <div style={{ display: 'flex', alignItems: 'center' }}>
-                            <ArraySizeSlider value={arraySize} onChange={handleArraySize} min={"5"} max={"30"} style={{ marginRight: '10px' }} />
+                            <ArraySizeSlider value={arraySize} onChange={handleArraySize} min={"5"} max={"23"} style={{ marginRight: '10px' }} />
                             <button onClick={() => generateArray()} className="generateRandomArrayButton">Change Values</button>
                         </div>
                     </div>

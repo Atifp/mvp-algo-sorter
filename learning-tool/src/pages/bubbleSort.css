@@ -1,4 +1,4 @@
-.bubbleTitle {
+.mergeTitle {
     font-family: 'Oxygen', monospace, Courier;
     color: white;
     font-size: 75px;
@@ -12,4 +12,23 @@
     position: absolute;
     top: 1%;
     right: 1%;
+}
+
+.chart {
+    margin: auto;
+    width: 800px;
+    height: 400px;
+    animation: none;
+    top: 93%;
+    left: 1%;
+    position: absolute;
+}
+
+.bubbleControlButtons {
+    display: flex;
+    gap: 10px; /* Adjust this value to change the spacing */
+    justify-content: center;
+    position: absolute;
+    top: 91%;
+    right: 25%;
 }

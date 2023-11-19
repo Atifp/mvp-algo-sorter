@@ -9,6 +9,7 @@ import './bubbleSort.css'
 import BarChart from '../components/BarChart'
 import PseudoCodeBubble from '../components/PseudoCode/PseudoCodeBubble'
 import Description from '../components/Description/Description'
+import Tab from '../components/Tabs/Tab'
 
 const BubbleSort = () => {
     const [array, setArray] = useState([]);
@@ -67,7 +68,7 @@ const BubbleSort = () => {
         }
         myArray.push(createStep(stepNum+=1,indices,sortArray,'Array is now sorted',[6,7],'rgba(0, 255, 0, 0.6)'))
         myArray.push(createStep(stepNum,indices,sortArray,'Array is now sorted, end of bubble sort',[8],'rgba(0, 255, 0, 0.6)'))
-        //after the steps are calculated, we then take the value known as algoSteps in Tab.js, set algoSteps = myArray
+        //after the steps are calculated, we then take the value known as algoSteps in Tab.jsx, set algoSteps = myArray
         return myArray;
     }
 
@@ -157,7 +158,7 @@ const BubbleSort = () => {
 
     return (
         <div>
-            <h1 className='bubbleTitle'>Bubble Sort</h1>
+            <h1 className='mergeTitle'>Bubble Sort</h1>
             <div className="buttons">
                 <div className="inputButton">
                     <InputArray array={array} setArray={setArray} setArraySize={setArraySize} setInitialArray={setInitialArray}></InputArray>
@@ -183,16 +184,16 @@ const BubbleSort = () => {
                         <BarChart data={dataArray} key={chartKey} sortIndex={sortIndex} barColour={barColor} />
                     </div>
                     <div className="content-container">
-                        <div className="controlButtons">
-                            <button onClick={sortArrayFully}>Sort</button>
-                            <button onClick={() => stepThroughSorting(false)}>Step</button>
-                            {showReset && <button onClick={resetArray}>Reset Array</button>}
-                        </div>
                         <div>
                             <Description description={algoDescription} />
                         </div>
                         <div>
                             <PseudoCodeBubble lineToHighlight={pseudoLine}></PseudoCodeBubble>
+                        </div>
+                        <div className="controlButtons">
+                            <button onClick={sortArrayFully}>Sort</button>
+                            <button onClick={() => stepThroughSorting(false)}>Step</button>
+                            {showReset && <button onClick={resetArray}>Reset Array</button>}
                         </div>
                     </div>
                     <div className="infoSection">
@@ -202,6 +203,9 @@ const BubbleSort = () => {
                             <p>Description: </p>
                             <p>I'm trying to see what happens with this page</p>
                             <p>Testing all of it</p>
+                        </div>
+                        <div className="tabBlock">
+                            <Tab></Tab>
                         </div>
                     </div>
                 </div>
