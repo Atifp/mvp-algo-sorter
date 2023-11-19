@@ -9,6 +9,7 @@
     align-items: flex-end;
     height: 309px; /* Adjust the height as needed */
     width: 800px;
+    color: white;
     margin-top: 20px; /* Add margin as needed */
     padding-top: 300px;
     margin-left: 20px;
@@ -19,7 +20,6 @@
     margin-right: 5px;
     background-color: turquoise;
     text-align: center;
-    color: white;
     padding: 5px;
     transition: height 0.2s, background-color 0.2s;
 }

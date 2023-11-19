@@ -6,7 +6,6 @@ import GenerateArray from '../components/arrayChoiceButtons/generateArray/genera
 import SelectArray from '../components/arrayChoiceButtons/selectArray/selectArray'
 import '../App.css'
 import './bubbleSort.css'
-import '../components/newBar.css'
 import PseudoCodeBubble from '../components/PseudoCode/PseudoCodeBubble'
 import Description from '../components/Description/Description'
 import Tab from '../components/Tabs/Tab'
@@ -153,7 +152,7 @@ const NewBubbleSort = () => {
 
     return (
         <div>
-            <h1 className='mergeTitle'>Bubble Sort</h1>
+            <h1 className='algoTitle'>Bubble Sort</h1>
             <div className="buttons">
                 <div className="inputButton">
                     <InputArray array={array} setArray={setArray} setArraySize={setArraySize} setInitialArray={setInitialArray}></InputArray>
@@ -175,23 +174,19 @@ const NewBubbleSort = () => {
             </div>
             {showGraph && (
                 <div className="chart-container">
-                    <div className="chart-holder">
-                        <div className="sorting-visualizer">
-                            <div className="bars">
-                                {dataArray.map((value, idx) => (
-                                    <div
-                                        className="bar"
-                                        key={idx}
-                                        style={{
-                                            height: `${value}px`,
-                                            backgroundColor: barColor && sortIndex.includes(idx) ? barColor : 'turquoise',
-                                        }}
-                                    >
-                                        {value}
-                                    </div>
-                                ))}
+                    <div className="bars">
+                        {array.map((value, idx) => (
+                            <div
+                                className="array-bar"
+                                key={idx}
+                                style={{
+                                    height: `${value}px`,
+                                    backgroundColor: barColor && sortIndex.includes(idx) ? barColor : 'turquoise',
+                                }}
+                            >
+                                {value}
                             </div>
-                        </div>
+                        ))}
                     </div>
                     <div className="content-container">
                         <div>
