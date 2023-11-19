@@ -6,6 +6,8 @@ import BubbleSort from "./pages/BubbleSort";
 import Algorithms from "./pages/Algorithms";
 import NoPageFound from "./pages/NoPageFound";
 import reportWebVitals from './reportWebVitals'
+import MergeSort from './pages/MergeSort'
+import NewBubbleSort from './pages/NewBubbleSort'
 
 export default function App() {
     return (
@@ -14,6 +16,8 @@ export default function App() {
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Home />} />
                     <Route path="bubbleSort" element={<BubbleSort />} />
+                    <Route path="newBubbleSort" element={<NewBubbleSort />} />
+                    <Route path="mergeSort" element={<MergeSort />} />
                     <Route path="algorithms" element={<Algorithms />} />
                     <Route path="*" element={<NoPageFound />} />
                 </Route>

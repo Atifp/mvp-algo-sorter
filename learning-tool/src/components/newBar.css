@@ -1,0 +1,30 @@
+.sorting-visualizer {
+    text-align: center;
+    margin-right: 20px;
+}
+
+.bars {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 309px; /* Adjust the height as needed */
+    width: 800px;
+    margin-top: 20px; /* Add margin as needed */
+    padding-top: 300px;
+    margin-left: 20px;
+}
+
+.array-bar {
+    flex-grow: 1;
+    margin-right: 5px;
+    background-color: turquoise;
+    text-align: center;
+    color: white;
+    padding: 5px;
+    transition: height 0.2s, background-color 0.2s;
+}
+
+.chart-holder{
+    padding-top: 300px;
+    margin-left: 20px;
+}

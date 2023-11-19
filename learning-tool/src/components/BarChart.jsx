@@ -3,55 +3,51 @@ import Chart from 'chart.js/auto';
 
 function BarChart({ data, sortIndex, barColour }) {
     const chartRef = useRef(null);
+
     useEffect(() => {
         let chartInstance = null;
 
         if (chartRef.current && data) {
             if (chartInstance) {
+                // Update the chart less frequently
                 chartInstance.update({
-                    duration: 2000,
+                    duration: 500, // Adjust the duration as needed
                     easing: 'easeInOutQuart',
                 });
-            }
-
-            const ctx = chartRef.current.getContext('2d');
-            chartInstance = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: data.map((value, _) => `${value}`),
-                    datasets: [
-                        {
-                            data: data,
-                            backgroundColor: function(context) {
-                                const index = context.dataIndex
-                                for (let i=0; i< sortIndex.length;i++){
-                                    if (index === sortIndex[i]) {
-                                        return barColour
-                                    }
-                                }
-                                return 'rgba(0, 246, 246, 0.66)';
+            } else {
+                const ctx = chartRef.current.getContext('2d');
+                chartInstance = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: data.map((value, _) => `${value}`),
+                        datasets: [
+                            {
+                                data: data,
+                                backgroundColor: data.map((_, index) =>
+                                    sortIndex.includes(index) ? barColour : 'rgba(0, 246, 246, 0.66)'
+                                ),
+                                borderColor: 'rgb(0,0,0)',
+                                borderWidth: 3,
                             },
-                            borderColor: 'rgb(0,0,0)',
-                            borderWidth: 3,
+                        ],
+                    },
+                    options: {
+                        plugins: {
+                            legend: {
+                                display: false,
+                            },
                         },
-                    ],
-                },
-                options: {
-                    plugins: {
+                        responsive: true,
+                        maintainAspectRatio: false,
                         legend: {
-                            display: false
+                            display: false,
+                        },
+                        animation: {
+                            duration: 0, // Disable initial animation
                         },
                     },
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    legend: {
-                        display: false
-                    },
-                    animation: {
-                        duration: 0, // Disable initial animation
-                    },
-                }
-            });
+                });
+            }
         }
 
         return () => {
@@ -62,6 +58,7 @@ function BarChart({ data, sortIndex, barColour }) {
     }, [data, sortIndex]);
 
     return <canvas ref={chartRef} />;
+    return (<canvas id="canvasExample" ref={chartRef}></canvas>);
 }
 
 export default BarChart;

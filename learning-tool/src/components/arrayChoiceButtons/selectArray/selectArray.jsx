@@ -24,7 +24,7 @@ function SelectArray({setArray, setArraySize, setInitialArray}) {
                 <div className="dropDownMenu">
                     <select  value={stringArray} onChange={handleArrayChange} >
                         <option value=" ">empty</option>
-                        <option value="35,30,27,22,20,17,15,13,10,5">low to high</option>
+                        <option value="305,300,270,202,200,170,115,103,100,95">low to high</option>
                         <option value="50">50</option>
                         <option value="100">100</option>
                     </select>

@@ -1,0 +1,85 @@
+.container {
+    display: flex;
+    font-family: 'Ubuntu', monospace, Courier;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background: black;
+    margin: 20px auto 0;
+    word-break: break-all;
+    border: 1px solid orange;
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden; /* Ensure the border doesn't get cut off */
+}
+
+.bloc-tabs {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    border-bottom: none;
+}
+
+.tabs {
+    flex: 1; /* Equal width for all tabs */
+    height: 40px; /* Adjusted height to make the tabs thinner */
+    padding: 8px 12px; /* Adjusted padding for a thinner appearance */
+    transition: all .2s linear;
+    border: 2px solid rgba(0, 0, 0, 0);
+    border-radius: 8px; /* Rounded corners */
+    font-size: 16px; /* Reduced font size for a sleeker look */
+    font-family: 'Ubuntu', monospace, Courier;
+    font-weight: bold;
+    color: #01f539;
+    background: black;
+    cursor: pointer;
+}
+
+.tabs:not(:last-child) {
+    margin-right: 5px; /* Adjusted margin for spacing between tabs */
+}
+
+.tabs:hover{
+    color: #00f8cb;
+    border-bottom: 2px solid #00f8cb;
+}
+.active-tabs {
+    background: black;
+    color: #f800ea;
+    border-bottom: 2px solid #f800ea;
+}
+
+.content-tabs {
+    flex-grow: 1;
+}
+
+.content {
+    background: black;
+    padding-left: 5px;
+    padding-right: 10px;
+    width: calc(100% - 4px); /* Adjusted width to account for border */
+    height: calc(100% - 4px); /* Adjusted height to account for border */
+    display: none;
+}
+
+.content h2 {
+    font-size: 24px; /* Adjusted font size for content heading */
+    color: #00fcd4; /* Text color for content heading */
+    margin-bottom: 10px; /* Adjusted margin for spacing */
+    padding-bottom: 5px;
+    border-bottom: 1px solid #d17f3f;
+}
+
+.content p {
+    font-size: 16px; /* Adjusted font size for content paragraphs */
+    color: white; /* Text color for content paragraphs */
+    background: black;
+}
+
+.active-content {
+    display: block;
+}
+
+.syntaxHighlighter {
+    background: black;
+}
