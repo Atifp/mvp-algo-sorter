@@ -7,11 +7,12 @@ import SelectArray from '../components/arrayChoiceButtons/selectArray/selectArra
 import Description from '../components/Description/Description'
 import PseudoCodeMerge from '../components/PseudoCode/PseudoCodeMerge'
 import Tab from '../components/Tabs/Tab'
+import {Link} from 'react-router-dom'
 
 const MergeSort = () => {
-    const [array, setArray] = useState([]);
-    const [algoSteps, setAlgoSteps] = useState([]);
-    const [arraySize, setArraySize] = useState(0);
+    const [array, setArray] = useState(["137,76,175,292,90,50,74"]);
+    const [algoSteps, setAlgoSteps] = useState(array);
+    const [arraySize, setArraySize] = useState(array.length);
     const [initialArray, setInitialArray] = useState([]);
     const [algoDescription, setAlgoDescription] = useState("");
     const [pseudoLine, setPseudoLine] =  useState([]);
@@ -78,17 +79,17 @@ const MergeSort = () => {
 
         // Iterate through the sub-arrays and compare elements
         while (i <= middleIdx && j <= endIdx) {
-            sortingSteps.push(createMergeStep("Iterate through the sub-arrays and compare elements", [12], [], false, false, SECONDARY_COLOR));
+            sortingSteps.push(createMergeStep("Iterate through the sub-arrays and compare elements", [12], [], false, false, 'purple'));
             //Highlight the elements being compared
             sortingSteps.push(createMergeStep(`Comparing ${copyArray[i]} and ${copyArray[j]}` , [13], [i, j], false, true, PRIMARY_COLOR));
             animations.push([i, j]);
             // Revert the color after comparison
-            sortingSteps.push(createMergeStep(`Comparing ${copyArray[i]} and ${copyArray[j]}` , [13], [i, j], false, true, SECONDARY_COLOR));
+            sortingSteps.push(createMergeStep(`Comparing ${copyArray[i]} and ${copyArray[j]}` , [13], [i, j], false, true, PRIMARY_COLOR));
             animations.push([i, j]);
 
             // Compare and overwrite values in the original array
             if (copyArray[i] <= copyArray[j]) {
-                sortingSteps.push(createMergeStep(`Moving bar with value ${copyArray[i]}` , [13,14,15], [k, copyArray[i]], true, false, SECONDARY_COLOR));
+                sortingSteps.push(createMergeStep(`Moving bar with value ${copyArray[i]}` , [13,14,15], [k, copyArray[i]], true, false, PRIMARY_COLOR));
                 animations.push([k, copyArray[i]]);
                 mainArray[k++] = copyArray[i++];
             } else {
@@ -152,8 +153,7 @@ const MergeSort = () => {
                         resolve();
                     },  ANIMATION_SPEED_MS)
                 );
-
-
+                setShowReset(true);
             }
             if (!currentStep.isHeightChange && !currentStep.isColorChange) {
                 await new Promise(resolve =>
@@ -196,6 +196,78 @@ const MergeSort = () => {
         }
     }
 
+    async function performSortStep(algoSteps, currentStepIndex) {
+        const arrayBars = document.getElementsByClassName('array-bar');
+        const currentStep = algoSteps[currentStepIndex];
+
+        if (currentStep.color === 'green') {
+            await new Promise(resolve =>
+                setTimeout(() => {
+                    for (let j = 0; j < array.length; j++) {
+                        const styleOfBar = arrayBars[j].style;
+                        setPseudoLine(currentStep.pseudoLineToHighlight);
+                        setAlgoDescription(currentStep.algoDescription);
+                        styleOfBar.backgroundColor = currentStep.color;
+                        currentStep.completedStep = true;
+                        setShowReset(true)
+                    }
+                    resolve();
+                }, ANIMATION_SPEED_MS)
+            );
+        }
+
+        if (!currentStep.isHeightChange && !currentStep.isColorChange) {
+            await new Promise(resolve =>
+                setTimeout(() => {
+                    setPseudoLine(currentStep.pseudoLineToHighlight);
+                    setAlgoDescription(currentStep.algoDescription);
+                    currentStep.completedStep = true;
+                    resolve();
+                }, ANIMATION_SPEED_MS)
+            );
+        } else if (currentStep.isColorChange) {
+            await new Promise(resolve =>
+                setTimeout(() => {
+                    const [indexOfBarOne, indexOfBarTwo] = currentStep.animations;
+                    const styleOfBarOne = arrayBars[indexOfBarOne].style;
+                    const styleOfBarTwo = arrayBars[indexOfBarTwo].style;
+                    const color = currentStep.color;
+                    setPseudoLine(currentStep.pseudoLineToHighlight);
+                    setAlgoDescription(currentStep.algoDescription);
+                    styleOfBarOne.backgroundColor = color;
+                    styleOfBarTwo.backgroundColor = color;
+                    currentStep.completedStep = true;
+                    resolve();
+                }, ANIMATION_SPEED_MS)
+            );
+        } else if (currentStep.isHeightChange) {
+            await new Promise(resolve =>
+                setTimeout(() => {
+                    const [indexOfBarOne, newHeight] = currentStep.animations;
+                    const styleOfBarOne = arrayBars[indexOfBarOne].style;
+                    setPseudoLine(currentStep.pseudoLineToHighlight);
+                    setAlgoDescription(currentStep.algoDescription);
+                    styleOfBarOne.height = `${newHeight}px`;
+                    arrayBars[indexOfBarOne].textContent = newHeight;
+                    currentStep.completedStep = true;
+                    resolve();
+                }, ANIMATION_SPEED_MS)
+            );
+        }
+    }
+
+    async function stepThrough(algoSteps, loop) {
+        for (let currentStepIndex = 0; currentStepIndex < algoSteps.length; currentStepIndex++) {
+            const newStep = algoSteps[currentStepIndex]
+            if (!newStep.completedStep){
+                await performSortStep(algoSteps, currentStepIndex);
+                if (!loop){
+                    break;
+                }
+            }
+            currentStepIndex++;
+        }
+    }
     function checkArraySize () {
         if (arraySize >= 5){
             setShowGraph(true)
@@ -207,6 +279,24 @@ const MergeSort = () => {
 
     function stepArray() {
         return undefined
+    }
+
+    function resetArray() {
+        for (let i = 0; i < algoSteps.length; i++) {
+            const currentStep = algoSteps[i];
+            currentStep.completedStep = false;
+        }
+        for (let j = 0; j < array.length; j++) {
+            const arrayBars = document.getElementsByClassName('array-bar');
+            const styleOfBar = arrayBars[j].style;
+            styleOfBar.backgroundColor = PRIMARY_COLOR;
+            styleOfBar.height = `${initialArray[j]}px`;
+            arrayBars[j].textContent = initialArray[j];
+        }
+        setPseudoLine([1]);
+        setAlgoDescription("");
+        setArray(initialArray);
+        setShowReset(false);
     }
 
     useEffect(() => {
@@ -230,6 +320,9 @@ const MergeSort = () => {
                         <SelectArray setArray={setArray} setArraySize={setArraySize} setInitialArray={setInitialArray}></SelectArray>
                     </div>
                 </div>
+                <button  className="backButton" >
+                    <Link to="/algorithms">Back</Link>
+                </button>
                 {showGraph && (
                     <div>
                         <div className="bars">
@@ -247,7 +340,8 @@ const MergeSort = () => {
                             ))}
                             <div className="controlButtons">
                                 <button onClick={() => sortArray(algoSteps)}>Sort</button>
-                                <button onClick={() => stepArray()}>Step</button>
+                                <button onClick={() => stepThrough(algoSteps, false)}>Step</button>
+                                {showReset && <button onClick={resetArray}>Reset Array</button>}
                             </div>
                             <div className="content-container">
                                 <div>
