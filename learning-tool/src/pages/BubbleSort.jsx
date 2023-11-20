@@ -196,7 +196,7 @@ const BubbleSort = () => {
                             {showReset && <button onClick={resetArray}>Reset Array</button>}
                         </div>
                     </div>
-                    <div className="infoSection">
+                    <div className="infoSectionBubble">
                         <div className="box">
                             <h2> Bubble Sort</h2>
                             <p>Time Complexity: O(n2) </p>

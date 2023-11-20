@@ -196,12 +196,12 @@ const NewBubbleSort = () => {
                             <PseudoCodeBubble lineToHighlight={pseudoLine}></PseudoCodeBubble>
                         </div>
                         <div className="bubbleControlButtons">
-                            <button onClick={sortArrayFully}>Sort</button>
-                            <button onClick={() => stepThroughSorting(false)}>Step</button>
+                            <button onClick={sortArrayFully} disabled={showReset}>Sort</button>
+                            <button onClick={() => stepThroughSorting(false)} disabled={showReset}>Step</button>
                             {showReset && <button onClick={resetArray}>Reset Array</button>}
                         </div>
                     </div>
-                    <div className="infoSection">
+                    <div className="infoSectionBubble">
                         <div className="box">
                             <h2> Bubble Sort</h2>
                             <p>Time Complexity: O(n2) </p>

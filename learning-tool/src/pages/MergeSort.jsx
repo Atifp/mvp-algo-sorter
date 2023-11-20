@@ -6,6 +6,7 @@ import GenerateArray from '../components/arrayChoiceButtons/generateArray/genera
 import SelectArray from '../components/arrayChoiceButtons/selectArray/selectArray'
 import Description from '../components/Description/Description'
 import PseudoCodeMerge from '../components/PseudoCode/PseudoCodeMerge'
+import Tab from '../components/Tabs/Tab'
 
 const MergeSort = () => {
     const [array, setArray] = useState([]);
@@ -14,6 +15,8 @@ const MergeSort = () => {
     const [initialArray, setInitialArray] = useState([]);
     const [algoDescription, setAlgoDescription] = useState("");
     const [pseudoLine, setPseudoLine] =  useState([]);
+    const [showGraph, setShowGraph] = useState(false);
+    const [showReset, setShowReset] = useState(false);
 
     const ANIMATION_SPEED_MS = 50;
     // This is the main color of the array bars.
@@ -80,16 +83,16 @@ const MergeSort = () => {
             sortingSteps.push(createMergeStep(`Comparing ${copyArray[i]} and ${copyArray[j]}` , [13], [i, j], false, true, PRIMARY_COLOR));
             animations.push([i, j]);
             // Revert the color after comparison
-            sortingSteps.push(createMergeStep(`Comparing ${copyArray[i]} and ${copyArray[j]}` , [13], [i, j], false, true, PRIMARY_COLOR));
+            sortingSteps.push(createMergeStep(`Comparing ${copyArray[i]} and ${copyArray[j]}` , [13], [i, j], false, true, SECONDARY_COLOR));
             animations.push([i, j]);
 
             // Compare and overwrite values in the original array
             if (copyArray[i] <= copyArray[j]) {
-                sortingSteps.push(createMergeStep(`Moving bar with value ${copyArray[i]}` , [13,14,15], [k, copyArray[i]], true, false, PRIMARY_COLOR));
+                sortingSteps.push(createMergeStep(`Moving bar with value ${copyArray[i]}` , [13,14,15], [k, copyArray[i]], true, false, SECONDARY_COLOR));
                 animations.push([k, copyArray[i]]);
                 mainArray[k++] = copyArray[i++];
             } else {
-                sortingSteps.push(createMergeStep(`Elements ${copyArray[i]} and ${copyArray[j]} have been reordered` , [16,17,18], [k, copyArray[j]], true, false, SECONDARY_COLOR));
+                sortingSteps.push(createMergeStep(`Elements ${copyArray[i]} and ${copyArray[j]} have been reordered` , [16,17,18], [k, copyArray[j]], true, false, PRIMARY_COLOR));
                 animations.push([k, copyArray[j]]);
                 mainArray[k++] = copyArray[j++];
             }
@@ -193,12 +196,22 @@ const MergeSort = () => {
         }
     }
 
+    function checkArraySize () {
+        if (arraySize >= 5){
+            setShowGraph(true)
+        }else {
+            setShowGraph(false)
+        }
+        setArraySize(array.length)
+    }
+
     function stepArray() {
         return undefined
     }
 
     useEffect(() => {
-        setAlgoSteps(calculateSteps)
+        checkArraySize();
+        setAlgoSteps(calculateSteps);
     }, [array])
 
 
@@ -217,32 +230,48 @@ const MergeSort = () => {
                         <SelectArray setArray={setArray} setArraySize={setArraySize} setInitialArray={setInitialArray}></SelectArray>
                     </div>
                 </div>
-                <div className="bars">
-                    {array.map((value, idx) => (
-                        <div
-                            className="array-bar"
-                            key={idx}
-                            style={{
-                                height: `${value}px`,
-                                backgroundColor: PRIMARY_COLOR,
-                            }}
-                        >
-                            {value}
+                {showGraph && (
+                    <div>
+                        <div className="bars">
+                            {array.map((value, idx) => (
+                                <div
+                                    className="array-bar"
+                                    key={idx}
+                                    style={{
+                                        height: `${value}px`,
+                                        backgroundColor: PRIMARY_COLOR,
+                                    }}
+                                >
+                                    {value}
+                                </div>
+                            ))}
+                            <div className="controlButtons">
+                                <button onClick={() => sortArray(algoSteps)}>Sort</button>
+                                <button onClick={() => stepArray()}>Step</button>
+                            </div>
+                            <div className="content-container">
+                                <div>
+                                    <Description description={algoDescription} />
+                                </div>
+                                <div>
+                                    <PseudoCodeMerge lineToHighlight={pseudoLine}></PseudoCodeMerge>
+                                </div>
+                            </div>
                         </div>
-                    ))}
-                </div>
-                <div className="controlButtons">
-                    <button onClick={() => sortArray(algoSteps)}>Sort</button>
-                    <button onClick={() => stepArray()}>Step</button>
-                </div>
-                <div className="content-container">
-                    <div>
-                        <Description description={algoDescription} />
+                        <div className="infoSectionMerge">
+                            <div className="box">
+                                <h2> Merge Sort</h2>
+                                <p>Time Complexity: O(n2) </p>
+                                <p>Description: </p>
+                                <p>I'm trying to see what happens with this page</p>
+                                <p>Testing all of it</p>
+                            </div>
+                            <div className="tabBlock">
+                                <Tab></Tab>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <PseudoCodeMerge lineToHighlight={pseudoLine}></PseudoCodeMerge>
-                    </div>
-                </div>
+                )}
             </div>
         </div>
     );
