@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react'
 import './mergeSort.css'
 import '../App.css'
+import '../components/newBar.css'
 import InputArray from '../components/arrayChoiceButtons/inputArray/inputArray'
 import GenerateArray from '../components/arrayChoiceButtons/generateArray/generateArray'
 import SelectArray from '../components/arrayChoiceButtons/selectArray/selectArray'
@@ -8,6 +9,7 @@ import Description from '../components/Description/Description'
 import PseudoCodeMerge from '../components/PseudoCode/PseudoCodeMerge'
 import Tab from '../components/Tabs/Tab'
 import {Link} from 'react-router-dom'
+import ArrayVisualizer from '../components/ArrayVisualizer/ArrayVisualizer'
 
 const MergeSort = () => {
     const [array, setArray] = useState(["137,76,175,292,90,50,74"]);
@@ -118,70 +120,8 @@ const MergeSort = () => {
         const additionalSteps = getMergeSortSteps(copyArray, newSteps);
         newSteps.push(...additionalSteps);
 
-        newSteps.push(createMergeStep("Array is now sorted", [21], [], false, false,'green'));
-        newSteps.push(createMergeStep("Array is now sorted", [22], [], false, false,'green'));
+        newSteps.push(createMergeStep("Array is now sorted", [21,22], [], false, false,'green'));
         return newSteps;
-    }
-
-    async function sortArray(algoSteps) {
-        // now I need to form the steps
-        for (let i = 0; i < algoSteps.length; i++) {
-            const arrayBars = document.getElementsByClassName('array-bar');
-            const currentStep = algoSteps[i];
-            if (currentStep.color === 'green'){
-                await new Promise(resolve =>
-                    setTimeout(() => {
-                        for (let j = 0; j < array.length; j++) {
-                            const styleOfBar = arrayBars[j].style;
-                            setPseudoLine(currentStep.pseudoLineToHighlight);
-                            setAlgoDescription(currentStep.algoDescription);
-                            styleOfBar.backgroundColor = currentStep.color;
-                            currentStep.completedStep = true;
-                        }
-                        resolve();
-                    },  ANIMATION_SPEED_MS)
-                );
-                setShowReset(true);
-            }
-            if (!currentStep.isHeightChange && !currentStep.isColorChange) {
-                await new Promise(resolve =>
-                    setTimeout(() => {
-                        setPseudoLine(currentStep.pseudoLineToHighlight);
-                        setAlgoDescription(currentStep.algoDescription);
-                        currentStep.completedStep = true;
-                        resolve();
-                    },  ANIMATION_SPEED_MS)
-                );
-            } else if (currentStep.isColorChange) {
-                await new Promise(resolve =>
-                    setTimeout(() => {
-                        const [indexOfBarOne, indexOfBarTwo] = currentStep.animations
-                        const styleOfBarOne = arrayBars[indexOfBarOne].style;
-                        const styleOfBarTwo = arrayBars[indexOfBarTwo].style;
-                        const color = currentStep.color
-                        setPseudoLine(currentStep.pseudoLineToHighlight);
-                        setAlgoDescription(currentStep.algoDescription);
-                        styleOfBarOne.backgroundColor = color;
-                        styleOfBarTwo.backgroundColor = color;
-                        currentStep.completedStep = true;
-                        resolve();
-                    }, ANIMATION_SPEED_MS)
-                );
-            } else if (currentStep.isHeightChange) {
-                await new Promise(resolve =>
-                    setTimeout(() => {
-                        const [indexOfBarOne, newHeight] = currentStep.animations;
-                        const styleOfBarOne = arrayBars[indexOfBarOne].style;
-                        setPseudoLine(currentStep.pseudoLineToHighlight);
-                        setAlgoDescription(currentStep.algoDescription);
-                        styleOfBarOne.height = `${newHeight}px`;
-                        arrayBars[indexOfBarOne].textContent = newHeight;
-                        currentStep.completedStep = true;
-                        resolve();
-                    }, ANIMATION_SPEED_MS)
-                );
-            }
-        }
     }
 
     async function performSortStep(algoSteps, currentStepIndex) {
@@ -202,6 +142,7 @@ const MergeSort = () => {
                     resolve();
                 }, ANIMATION_SPEED_MS)
             );
+            return; // Skip the increment in case of 'green'
         }
 
         if (!currentStep.isHeightChange && !currentStep.isColorChange) {
@@ -242,7 +183,11 @@ const MergeSort = () => {
                 }, ANIMATION_SPEED_MS)
             );
         }
+
+        // Increment outside of the 'green' check
+        currentStepIndex++;
     }
+
 
     async function stepThrough(algoSteps, loop) {
         for (let currentStepIndex = 0; currentStepIndex < algoSteps.length; currentStepIndex++) {
@@ -253,7 +198,6 @@ const MergeSort = () => {
                     break;
                 }
             }
-            currentStepIndex++;
         }
     }
     function checkArraySize () {
@@ -292,65 +236,68 @@ const MergeSort = () => {
     return (
         <div>
             <h1 className='mergeTitle'>Merge Sort</h1>
-            <div className="app">
-                <div className="button-container">
-                    <div className="inputButton">
-                        <InputArray array={array} setArray={setArray} setArraySize={setArraySize} setInitialArray={setInitialArray}></InputArray>
-                    </div>
-                    <div className="generate">
-                        <GenerateArray array={array} setArray={setArray} setNewArraySize={setArraySize} setInitialArray={setInitialArray}></GenerateArray>
-                    </div>
-                    <div className="select">
-                        <SelectArray setArray={setArray} setArraySize={setArraySize} setInitialArray={setInitialArray}></SelectArray>
-                    </div>
+            <div className="button-container">
+                <div className="inputButton">
+                    <InputArray array={array} setArray={setArray} setArraySize={setArraySize} setInitialArray={setInitialArray}></InputArray>
                 </div>
+                <div className="generate">
+                    <GenerateArray array={array} setArray={setArray} setNewArraySize={setArraySize} setInitialArray={setInitialArray}></GenerateArray>
+                </div>
+                <div className="select">
+                    <SelectArray setArray={setArray} setArraySize={setArraySize} setInitialArray={setInitialArray}></SelectArray>
+                </div>
+            </div>
+            <div className="visualAlgo">
+                <ArrayVisualizer setArray={setArray} setArraySize={setArraySize} fullArray={array}></ArrayVisualizer>
+            </div>
+            <div >
                 <button  className="backButton" >
                     <Link to="/algorithms">Back</Link>
                 </button>
-                {showGraph && (
-                    <div>
-                        <div className="bars">
-                            {array.map((value, idx) => (
-                                <div
-                                    className="array-bar"
-                                    key={idx}
-                                    style={{
-                                        height: `${value}px`,
-                                        backgroundColor: PRIMARY_COLOR,
-                                    }}
-                                >
-                                    {value}
-                                </div>
-                            ))}
-                            <div className="controlButtons">
-                                <button onClick={() => sortArray(algoSteps)}>Sort</button>
-                                <button onClick={() => stepThrough(algoSteps, false)}>Step</button>
-                                {showReset && <button onClick={resetArray}>Reset Array</button>}
+            </div>
+            {showGraph && (
+                <div className="chart-holder">
+                    <div className="bars">
+                        {array.map((value, idx) => (
+                            <div
+                                className="array-bar"
+                                key={idx}
+                                style={{
+                                    height: `${value}px`,
+                                    backgroundColor: PRIMARY_COLOR,
+                                }}
+                            >
+                                {value}
                             </div>
-                            <div className="content-container">
-                                <div>
-                                    <Description description={algoDescription} />
-                                </div>
-                                <div>
-                                    <PseudoCodeMerge lineToHighlight={pseudoLine}></PseudoCodeMerge>
-                                </div>
-                            </div>
+                        ))}
+                        <div className="controlButtons">
+                            <button onClick={() => stepThrough(algoSteps, true)}>Sort</button>
+                            <button onClick={() => stepThrough(algoSteps, false)}>Step</button>
+                            {showReset && <button onClick={resetArray}>Reset Array</button>}
                         </div>
-                        <div className="infoSectionMerge">
-                            <div className="box">
-                                <h2> Merge Sort</h2>
-                                <p>Time Complexity: O(n2) </p>
-                                <p>Description: </p>
-                                <p>I'm trying to see what happens with this page</p>
-                                <p>Testing all of it</p>
+                        <div className="content-container">
+                            <div>
+                                <Description description={algoDescription} />
                             </div>
-                            <div className="tabBlock">
-                                <Tab></Tab>
+                            <div>
+                                <PseudoCodeMerge lineToHighlight={pseudoLine}></PseudoCodeMerge>
                             </div>
                         </div>
                     </div>
-                )}
-            </div>
+                    <div className="infoSectionMerge">
+                        <div className="box">
+                            <h2> Merge Sort</h2>
+                            <p>Time Complexity: O(n2) </p>
+                            <p>Description: </p>
+                            <p>I'm trying to see what happens with this page</p>
+                            <p>Testing all of it</p>
+                        </div>
+                        <div className="tabBlock">
+                            <Tab></Tab>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

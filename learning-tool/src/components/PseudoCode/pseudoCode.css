@@ -1,6 +1,6 @@
 .PseudoCode {
-    right: 1%;
-    top: 36%;
+    right: 4%;
+    top: 38%;
     position: absolute;
     float: right;
     font-size: 22px;
@@ -23,16 +23,19 @@
 }
 
 .PseudoCodeMerge {
-    right: 2%;
-    top: 28%;
+    right: 1%;
+    top: 36%;
     position: absolute;
     float: right;
-    font-size: 11px;
-    border: 3px solid purple; /* Combined border shorthand */
-    border-radius: 10px; /* Adjust the radius as needed */
+    font-size: 18px;
+    border: 3px solid purple;
+    border-radius: 10px;
     color: white;
     font-family: 'Oxygen', monospace, Courier;
-    padding-right: 15px; /* Add padding for margin between content and border */
+    padding-right: 15px;
     padding-left: 15px;
     margin: auto;
+    height: 450px; /* Set a fixed height for the scrollable area */
+    width: 500px;
+    overflow: auto; /* Make the content scrollable if it exceeds the height */
 }

@@ -165,7 +165,7 @@ const BubbleSort = () => {
                 </div>
             </div>
             <div className="visualAlgo">
-                <ArrayVisualizer fullArray={array}></ArrayVisualizer>
+                <ArrayVisualizer setArray={setArray} setArraySize={setArraySize} fullArray={array}></ArrayVisualizer>
             </div>
             <div >
                 <button  className="backButton" >
@@ -174,7 +174,7 @@ const BubbleSort = () => {
             </div>
             {showGraph && (
                 <div className="chart-container">
-                    <div className="bars">
+                    <div className="bubbleBars">
                         {dataArray.map((value, idx) => (
                             <div
                                 className="array-bar"
