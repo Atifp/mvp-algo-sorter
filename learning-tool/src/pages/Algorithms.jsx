@@ -17,11 +17,6 @@ const Algorithms = () => {
                         <button >Merge Sort</button>
                     </Link>
                 </div>
-                <div >
-                    <Link to="/newBubbleSort" >
-                        <button >New Bubble Sort</button>
-                    </Link>
-                </div>
                 <button >
                     <Link to="/">Back</Link>
                 </button>

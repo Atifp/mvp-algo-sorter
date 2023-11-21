@@ -6,7 +6,6 @@ import GenerateArray from '../components/arrayChoiceButtons/generateArray/genera
 import SelectArray from '../components/arrayChoiceButtons/selectArray/selectArray'
 import '../App.css'
 import './bubbleSort.css'
-import BarChart from '../components/BarChart'
 import PseudoCodeBubble from '../components/PseudoCode/PseudoCodeBubble'
 import Description from '../components/Description/Description'
 import Tab from '../components/Tabs/Tab'
@@ -17,7 +16,6 @@ const BubbleSort = () => {
     const [showGraph, setShowGraph] = useState(false);
     const [showReset, setShowReset] = useState(false);
     const [pseudoLine, setPseudoLine] =  useState([]);
-    const [chartKey, setChartKey] = useState(0); // this forces the chart to re-render everytime the array changes
     const [sortIndex, setSortIndex] = useState([]);
     const [barColor, setBarColor] = useState("");
     const [algoSteps, setAlgoSteps] = useState([]);
@@ -38,37 +36,35 @@ const BubbleSort = () => {
         }
     }
 
-    function calculateBubbleSteps (){
-        let myArray = []
-        //deepcopy the array passed in
-        const sortArray = [...array]
+    function calculateBubbleSteps() {
+        let myArray = [];
+        // deepcopy the array passed in
+        const sortArray = [...array];
         // see if indices can be replaced with sortArray.length
         const indices = sortArray.map((_, index) => index);
-        let stepNum = 0
-        myArray.push(createStep(stepNum,indices,array,"Running the array against Bubble Sort...", [1],'rgba(0, 246, 246, 0.66)'))
-        myArray.push(createStep(stepNum,indices,array,"Checking the array and finding the first element", [2],'rgba(0, 246, 246, 0.66)'))
+        let stepNum = 0;
+        myArray.push(createStep(stepNum, indices, array, "Running the array against Bubble Sort...", [1], 'rgba(0, 246, 246, 0.66)'));
+        myArray.push(createStep(stepNum, indices, array, "Checking the array and finding the first element", [2], 'rgba(0, 246, 246, 0.66)'));
         for (let i = 0; i < sortArray.length; i++) {
             // Last i elements are already in place
             for (let j = 0; j < sortArray.length - i - 1; j++) {
                 // Checking if the item at present iteration
                 // is greater than the next iteration
                 if (sortArray[j] > sortArray[j + 1]) {
-                    const theString = 'Elements that need to be changed ' + sortArray[j]+' with ' + sortArray[j + 1]
-                    const tester = [...sortArray]
-                    myArray.push(createStep(stepNum+=1,[j,j+1],tester,theString, [3],"red"))
+                    const tester = [...sortArray];
+                    myArray.push(createStep(stepNum += 1, [j, j + 1], tester, `Comparing elements ${sortArray[j]} and ${sortArray[j + 1]}`, [3], "red"));
                     // If the condition is true then swap them
-                    const temp = sortArray[j]
-                    sortArray[j] = sortArray[j + 1]
-                    sortArray[j + 1] = temp
-                    const tester2 = [...sortArray]
-                    const changedString = 'Elements that have been changed ' + sortArray[j]+' with ' + sortArray[j + 1]
-                    myArray.push(createStep(stepNum+=1,[j,j+1],tester2,changedString, [4,5],"green"))
+                    const temp = sortArray[j];
+                    sortArray[j] = sortArray[j + 1];
+                    sortArray[j + 1] = temp;
+                    const tester2 = [...sortArray];
+                    myArray.push(createStep(stepNum += 1, [j, j + 1], tester2, `Swapping elements ${sortArray[j]} and ${sortArray[j + 1]}`, [4, 5], "green"));
                 }
             }
         }
-        myArray.push(createStep(stepNum+=1,indices,sortArray,'Array is now sorted',[6,7],'rgba(0, 255, 0, 0.6)'))
-        myArray.push(createStep(stepNum,indices,sortArray,'Array is now sorted, end of bubble sort',[8],'rgba(0, 255, 0, 0.6)'))
-        //after the steps are calculated, we then take the value known as algoSteps in Tab.jsx, set algoSteps = myArray
+        myArray.push(createStep(stepNum += 1, indices, sortArray, 'Array is now sorted', [6, 7], 'rgba(0, 255, 0, 0.6)'));
+        myArray.push(createStep(stepNum, indices, sortArray, 'Array is now sorted, end of bubble sort', [8], 'rgba(0, 255, 0, 0.6)'));
+        // after the steps are calculated, we then take the value known as algoSteps in Tab.jsx, set algoSteps = myArray
         return myArray;
     }
 
@@ -98,7 +94,7 @@ const BubbleSort = () => {
                 clearInterval(loopInterval)
                 setShowReset(true)
             }
-        }, 500)
+        }, 300)
     }
 
     const stepThroughSorting = async (loop) => {
@@ -146,8 +142,6 @@ const BubbleSort = () => {
     }, [array]);
 
     useEffect(() => {
-        // Update the chartKey whenever the array changes
-        setChartKey((prevKey) => prevKey + 1);
         setDataArray(array);
     }, [array])
 
@@ -158,7 +152,7 @@ const BubbleSort = () => {
 
     return (
         <div>
-            <h1 className='mergeTitle'>Bubble Sort</h1>
+            <h1 className='algoTitle'>Bubble Sort</h1>
             <div className="buttons">
                 <div className="inputButton">
                     <InputArray array={array} setArray={setArray} setArraySize={setArraySize} setInitialArray={setInitialArray}></InputArray>
@@ -180,8 +174,19 @@ const BubbleSort = () => {
             </div>
             {showGraph && (
                 <div className="chart-container">
-                    <div className="chart">
-                        <BarChart data={dataArray} key={chartKey} sortIndex={sortIndex} barColour={barColor} />
+                    <div className="bars">
+                        {dataArray.map((value, idx) => (
+                            <div
+                                className="array-bar"
+                                key={idx}
+                                style={{
+                                    height: `${value}px`,
+                                    backgroundColor: barColor && sortIndex.includes(idx) ? barColor : 'turquoise',
+                                }}
+                            >
+                                {value}
+                            </div>
+                        ))}
                     </div>
                     <div className="content-container">
                         <div>
@@ -190,9 +195,9 @@ const BubbleSort = () => {
                         <div>
                             <PseudoCodeBubble lineToHighlight={pseudoLine}></PseudoCodeBubble>
                         </div>
-                        <div className="controlButtons">
-                            <button onClick={sortArrayFully}>Sort</button>
-                            <button onClick={() => stepThroughSorting(false)}>Step</button>
+                        <div className="bubbleControlButtons">
+                            <button onClick={sortArrayFully} disabled={showReset}>Sort</button>
+                            <button onClick={() => stepThroughSorting(false)} disabled={showReset}>Step</button>
                             {showReset && <button onClick={resetArray}>Reset Array</button>}
                         </div>
                     </div>
