@@ -40,7 +40,21 @@
   margin-top: 20px; /* Adjust as needed */
 }
 
-.infoSection {
+.infoSectionBubble {
+  font-family: 'Ubuntu', monospace, Courier;
+  position: relative;
+  width: 100%;
+  margin-top: 10%;
+  padding-top: 30px;
+  min-height: 100vh;
+  display: flex; /* Use flexbox for easier alignment */
+  overflow: auto;
+  color: white;
+  background: black;
+  word-wrap: normal;
+}
+
+.infoSectionMerge {
   font-family: 'Ubuntu', monospace, Courier;
   position: relative;
   width: 100%;
