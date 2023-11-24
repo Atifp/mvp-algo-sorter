@@ -12,9 +12,9 @@ import {Link} from 'react-router-dom'
 import ArrayVisualizer from '../components/ArrayVisualizer/ArrayVisualizer'
 
 const MergeSort = () => {
-    const [array, setArray] = useState(["137,76,175,292,90,50,74"]);
-    const [algoSteps, setAlgoSteps] = useState(array);
-    const [arraySize, setArraySize] = useState(array.length);
+    const [array, setArray] = useState([137,76,175,292,90,50,74]);
+    const [algoSteps, setAlgoSteps] = useState();
+    const [arraySize, setArraySize] = useState();
     const [initialArray, setInitialArray] = useState([]);
     const [algoDescription, setAlgoDescription] = useState("");
     const [pseudoLine, setPseudoLine] =  useState([]);
@@ -27,7 +27,7 @@ const MergeSort = () => {
     // This is the color of array bars that are being compared throughout the animations.
     const SECONDARY_COLOR = 'red';
 
-    function createMergeStep(algoDescription, pseudoLineToHighlight, animations, isHeightChange, isColorChange, color) {
+    function createMergeStep(algoDescription, pseudoLineToHighlight, animations, isHeightChange, isColorChange, color, isMergeStep) {
         return {
             algoDescription: algoDescription,
             pseudoLineToHighlight: pseudoLineToHighlight,
@@ -35,14 +35,15 @@ const MergeSort = () => {
             animations: animations,
             isHeightChange: isHeightChange,
             isColorChange: isColorChange,
-            color: color
+            color: color,
+            isMergeStep: isMergeStep,
         };
     }
 
     function getMergeSortSteps(mainArray, sortingSteps) {
         // If there's only one value, no need for any animations
         if (mainArray.length <= 1) {
-            sortingSteps.push(createMergeStep("The array is of length 1, already sorted", [2,3], [], false, false, PRIMARY_COLOR));
+            sortingSteps.push(createMergeStep("The array is of length 1, already sorted", [2,3], [], false, false, PRIMARY_COLOR, false));
             return sortingSteps;
         }
         // don't want the changes to occur on the actual array
@@ -60,7 +61,7 @@ const MergeSort = () => {
         const middleIdx = Math.floor((startIdx + endIdx) / 2);
 
         // Recursively call mergeSortHelper on the left and right halves of the array
-        sortingSteps.push(createMergeStep("Recursively call mergeSort on the left and right halves of the array to split them", [5,6], [], false, false, PRIMARY_COLOR));
+        sortingSteps.push(createMergeStep("Recursively call mergeSort on the left and right halves of the array to split them", [5,6], [], false, false, PRIMARY_COLOR, false));
 
         mergeSortHelper(copyArray, startIdx, middleIdx, mainArray, sortingSteps);
         mergeSortHelper(copyArray, middleIdx + 1, endIdx, mainArray, sortingSteps);
@@ -70,8 +71,8 @@ const MergeSort = () => {
     }
 
     function doMerge(mainArray, startIdx, middleIdx, endIdx, copyArray, sortingSteps) {
-        sortingSteps.push(createMergeStep("Merge the sub arrays, sorting them as they are being merged", [7,9], [], false, false, PRIMARY_COLOR));
-        sortingSteps.push(createMergeStep("Form an empty results array to store the sub arrays merged and sorted", [10,11], [], false, false, PRIMARY_COLOR));
+        sortingSteps.push(createMergeStep("Merge the sub arrays, sorting them as they are being merged", [7,9], [], false, false, PRIMARY_COLOR, false));
+        sortingSteps.push(createMergeStep("Form an empty results array to store the sub arrays merged and sorted", [10,11], [], false, false, PRIMARY_COLOR, false));
 
         let k = startIdx;
         let i = startIdx;
@@ -79,48 +80,48 @@ const MergeSort = () => {
 
         // Iterate through the sub-arrays and compare elements
         while (i <= middleIdx && j <= endIdx) {
-            sortingSteps.push(createMergeStep("Iterate through the sub-arrays and compare elements", [12], [], false, false, 'purple'));
+            sortingSteps.push(createMergeStep("Iterate through the sub-arrays and compare elements", [12], [], false, false, 'purple', false));
             //Highlight the elements being compared
-            sortingSteps.push(createMergeStep(`Comparing ${copyArray[i]} and ${copyArray[j]}` , [13], [i, j], false, true, PRIMARY_COLOR));
+            sortingSteps.push(createMergeStep(`Comparing ${copyArray[i]} and ${copyArray[j]}` , [13], [i, j], false, true, SECONDARY_COLOR, true));
             // Revert the color after comparison
-            sortingSteps.push(createMergeStep(`Comparing ${copyArray[i]} and ${copyArray[j]}` , [13], [i, j], false, true, PRIMARY_COLOR));
+            sortingSteps.push(createMergeStep(`Comparing ${copyArray[i]} and ${copyArray[j]}` , [13], [i, j], false, true, PRIMARY_COLOR, false));
 
             // Compare and overwrite values in the original array
             if (copyArray[i] <= copyArray[j]) {
-                sortingSteps.push(createMergeStep(`Moving bar with value ${copyArray[i]}` , [13,14,15], [k, copyArray[i]], true, false, PRIMARY_COLOR));
+                sortingSteps.push(createMergeStep(`Moving bar with value ${copyArray[i]}` , [13,14,15], [k, copyArray[i]], true, false, PRIMARY_COLOR, true));
                 mainArray[k++] = copyArray[i++];
             } else {
-                sortingSteps.push(createMergeStep(`Elements ${copyArray[i]} and ${copyArray[j]} have been reordered` , [16,17,18], [k, copyArray[j]], true, false, PRIMARY_COLOR));
+                sortingSteps.push(createMergeStep(`Elements ${copyArray[i]} and ${copyArray[j]} have been reordered` , [16,17,18], [k, copyArray[j]], true, false, PRIMARY_COLOR, true));
                 mainArray[k++] = copyArray[j++];
             }
         }
 
         // Handle remaining elements in the left subarray
         while (i <= middleIdx) {
-            sortingSteps.push(createMergeStep(`Add remaining elements of left sub-array to result` , [19], [i, i], false, true, SECONDARY_COLOR));
-            sortingSteps.push(createMergeStep(`Add remaining elements of left sub-array to result` , [19], [i, i], false, true, PRIMARY_COLOR));
-            sortingSteps.push(createMergeStep(`Add remaining elements of left sub-array to result` , [19], [k, copyArray[i]], true, false, PRIMARY_COLOR));
+            sortingSteps.push(createMergeStep(`Add remaining elements of left sub-array to result` , [19], [i, i], false, true, SECONDARY_COLOR, true));
+            sortingSteps.push(createMergeStep(`Add remaining elements of left sub-array to result` , [19], [i, i], false, true, PRIMARY_COLOR, false));
+            sortingSteps.push(createMergeStep(`Add remaining elements of left sub-array to result` , [19], [k, copyArray[i]], true, false, PRIMARY_COLOR,true));
             mainArray[k++] = copyArray[i++];
         }
 
         // Handle remaining elements in the right subarray
         while (j <= endIdx) {
-            sortingSteps.push(createMergeStep(`Add remaining elements of right sub-array to result` , [20], [j, j], false, true, SECONDARY_COLOR));
-            sortingSteps.push(createMergeStep(`Add remaining elements of right sub-array to result` , [20], [j, j], false, true, PRIMARY_COLOR));
-            sortingSteps.push(createMergeStep(`Add remaining elements of right sub-array to result` , [20], [k, copyArray[j]], true, false, PRIMARY_COLOR));
+            sortingSteps.push(createMergeStep(`Add remaining elements of right sub-array to result` , [20], [j, j], false, true, SECONDARY_COLOR, true));
+            sortingSteps.push(createMergeStep(`Add remaining elements of right sub-array to result` , [20], [j, j], false, true, PRIMARY_COLOR, false));
+            sortingSteps.push(createMergeStep(`Add remaining elements of right sub-array to result` , [20], [k, copyArray[j]], true, false, PRIMARY_COLOR, true));
             mainArray[k++] = copyArray[j++];
         }
     }
 
     function calculateSteps() {
         const newSteps = [];
-        newSteps.push(createMergeStep("Running the array against Merge Sort...", [1], [], false, false, PRIMARY_COLOR));
+        newSteps.push(createMergeStep("Running the array against Merge Sort...", [1], [], false, false, PRIMARY_COLOR, false));
         //Now we need to get all the animations that need to occur on the graph
         const copyArray = [...array]
         const additionalSteps = getMergeSortSteps(copyArray, newSteps);
         newSteps.push(...additionalSteps);
 
-        newSteps.push(createMergeStep("Array is now sorted", [21,22], [], false, false,'green'));
+        newSteps.push(createMergeStep("Array is now sorted", [21,22], [], false, false,'rgba(0, 255, 0, 0.6)', false));
         return newSteps;
     }
 
@@ -128,7 +129,7 @@ const MergeSort = () => {
         const arrayBars = document.getElementsByClassName('array-bar');
         const currentStep = algoSteps[currentStepIndex];
 
-        if (currentStep.color === 'green') {
+        if (currentStep.color === 'rgba(0, 255, 0, 0.6)') {
             await new Promise(resolve =>
                 setTimeout(() => {
                     for (let j = 0; j < array.length; j++) {
@@ -265,14 +266,15 @@ const MergeSort = () => {
                                 style={{
                                     height: `${value}px`,
                                     backgroundColor: PRIMARY_COLOR,
+                                    marginRight: value.isMergeStep ? '90px' : '2px', // Add extra margin for merge steps
                                 }}
                             >
                                 {value}
                             </div>
                         ))}
                         <div className="controlButtons">
-                            <button onClick={() => stepThrough(algoSteps, true)}>Sort</button>
-                            <button onClick={() => stepThrough(algoSteps, false)}>Step</button>
+                            <button disabled={showReset} onClick={() => stepThrough(algoSteps, true)}>Sort</button>
+                            <button disabled={showReset} onClick={() => stepThrough(algoSteps, false)}>Step</button>
                             {showReset && <button onClick={resetArray}>Reset Array</button>}
                         </div>
                         <div className="content-container">
@@ -293,7 +295,7 @@ const MergeSort = () => {
                             <p>Testing all of it</p>
                         </div>
                         <div className="tabBlock">
-                            <Tab></Tab>
+                            <Tab algoName={"mergeSort"}></Tab>
                         </div>
                     </div>
                 </div>

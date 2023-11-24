@@ -3,14 +3,14 @@
     font-family: 'Ubuntu', monospace, Courier;
     flex-direction: column;
     position: relative;
-    width: 100%;
+    width: 600px;
     height: 400px;
     background: black;
     margin: 20px auto 0;
     word-break: break-all;
     border: 1px solid orange;
     border-radius: 10px; /* Rounded corners */
-    overflow: hidden; /* Ensure the border doesn't get cut off */
+    overflow: auto; /* Ensure the border doesn't get cut off */
 }
 
 .bloc-tabs {
@@ -51,11 +51,27 @@
 
 .content-tabs {
     flex-grow: 1;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    overflow-y: scroll;
+}
+
+/* Style for Webkit (Chrome, Safari) */
+.content-tabs::-webkit-scrollbar {
+    width: 5px;
+}
+
+.content-tabs::-webkit-scrollbar-thumb {
+    background-color: #f800ea; /* Color of the thumb */
+    border-radius: 6px; /* Rounded corners */
+}
+
+.content-tabs::-webkit-scrollbar-track {
+    background-color: #222; /* Color of the track */
 }
 
 .content {
     background: black;
-    padding-left: 5px;
+    padding-left: 15px;
     padding-right: 10px;
     width: calc(100% - 4px); /* Adjusted width to account for border */
     height: calc(100% - 4px); /* Adjusted height to account for border */

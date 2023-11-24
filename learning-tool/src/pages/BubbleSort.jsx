@@ -11,7 +11,7 @@ import Description from '../components/Description/Description'
 import Tab from '../components/Tabs/Tab'
 
 const BubbleSort = () => {
-    const [array, setArray] = useState([]);
+    const [array, setArray] = useState([137,76,175,292,90,50,74]);
     const [initialArray, setInitialArray] = useState([]);
     const [showGraph, setShowGraph] = useState(false);
     const [showReset, setShowReset] = useState(false);
@@ -210,7 +210,7 @@ const BubbleSort = () => {
                             <p>Testing all of it</p>
                         </div>
                         <div className="tabBlock">
-                            <Tab></Tab>
+                            <Tab algoName={"bubbleSort"}></Tab>
                         </div>
                     </div>
                 </div>
