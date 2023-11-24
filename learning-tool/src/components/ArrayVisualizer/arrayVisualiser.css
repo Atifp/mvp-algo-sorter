@@ -1,6 +1,24 @@
-.array {
+.array-container {
+    display: flex;
+    align-items: center;
     font-family: 'Oxygen', monospace, Courier;
     color: white;
     font-weight: bold;
     font-size: 18px;
+}
+
+.prefix-text,
+.suffix-text {
+    white-space: nowrap;
+}
+
+.array-values {
+    overflow-x: auto; /* Optional: add this to allow the text to overflow horizontally */
+    white-space: nowrap; /* Prevent line breaks */
+}
+
+.scrollable {
+    overflow-x: auto;
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: transparent transparent;
 }

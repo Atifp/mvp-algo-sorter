@@ -1,6 +1,4 @@
 
-y
-Ilearning-tool/src/components/arrayChoiceButtons/clearArray/clearArray.jsx,b/a/ba1c3dc133fc1c765b390581d0d2333d39d2d4cb
 M
 learning-tool/src/App.test.js,f/0/f0e42cfe0627d5d031f85755c9ee0879f51193e8
 y
@@ -25,13 +23,5 @@ R
 Olearning-tool/src/components/arrayChoiceButtons/generateArray/generateArray.css,7/4/74bd45bda1fd1c6a5c95633906e1131d81d7fbbf
 P
  learning-tool/src/pages/Home.jsx,8/f/8f10ac5da66577f068da3fe47ff4f65042bea46c
-l
-<learning-tool/src/components/PseudoCode/PseudoCodeBubble.jsx,3/0/305f3e14845cf115bd186cf82f6b6ebc24742dc2
-W
-'learning-tool/src/components/newBar.css,a/e/ae92e388e6db202e1b7222648213b5657e79358f
-V
-&learning-tool/src/pages/bubbleSort.css,9/e/9e40a35d1cd40182322e1f05dcae8e3b03ee2aa6
-I
-learning-tool/src/App.css,1/a/1a955ab1332ae95335f8c205aa8321713e0c8708
 y
 Ilearning-tool/src/components/arrayChoiceButtons/inputArray/inputArray.jsx,8/0/80d51f56a8a081b004c90e6e8d229ddb60817991
