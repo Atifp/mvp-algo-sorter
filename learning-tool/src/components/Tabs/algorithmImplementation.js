@@ -214,6 +214,57 @@ const implementations = {
         "        mergeSort(arr, l, m)\n" +
         "        mergeSort(arr, m + 1, r)\n" +
         "        merge(arr, l, m, r)\n",
+    insertionSortC:
+        "void insertionSort(int arr[], int n) {\n" +
+        "    int i, key, j;\n" +
+        "    for (i = 1; i < n; i++) {\n" +
+        "        key = arr[i];\n" +
+        "        j = i - 1;\n" +
+        "        while (j >= 0 && arr[j] > key) {\n" +
+        "            arr[j + 1] = arr[j];\n" +
+        "            j = j - 1;\n" +
+        "        }\n" +
+        "        arr[j + 1] = key;\n" +
+        "    }\n" +
+        "}\n",
+
+    insertionSortCpp:
+        "void insertionSort(int arr[], int n) {\n" +
+        "    int i, key, j;\n" +
+        "    for (i = 1; i < n; i++) {\n" +
+        "        key = arr[i];\n" +
+        "        j = i - 1;\n" +
+        "        while (j >= 0 && arr[j] > key) {\n" +
+        "            arr[j + 1] = arr[j];\n" +
+        "            j = j - 1;\n" +
+        "        }\n" +
+        "        arr[j + 1] = key;\n" +
+        "    }\n" +
+        "}\n",
+
+    insertionSortJava:
+        "static void insertionSort(int arr[]) {\n" +
+        "    int n = arr.length;\n" +
+        "    for (int i = 1; i < n; ++i) {\n" +
+        "        int key = arr[i];\n" +
+        "        int j = i - 1;\n" +
+        "        while (j >= 0 && arr[j] > key) {\n" +
+        "            arr[j + 1] = arr[j];\n" +
+        "            j = j - 1;\n" +
+        "        }\n" +
+        "        arr[j + 1] = key;\n" +
+        "    }\n" +
+        "}\n",
+
+    insertionSortPython:
+        "def insertionSort(arr):\n" +
+        "    for i in range(1, len(arr)):\n" +
+        "        key = arr[i]\n" +
+        "        j = i - 1\n" +
+        "        while j >= 0 and arr[j] > key:\n" +
+        "            arr[j + 1] = arr[j]\n" +
+        "            j = j - 1\n" +
+        "        arr[j + 1] = key\n",
     // Add more algorithms as needed
 };
 
