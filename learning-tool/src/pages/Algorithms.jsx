@@ -17,6 +17,11 @@ const Algorithms = () => {
                         <button >Merge Sort</button>
                     </Link>
                 </div>
+                <div >
+                    <Link to="/insertionSort" >
+                        <button >Insertion Sort</button>
+                    </Link>
+                </div>
                 <button >
                     <Link to="/">Back</Link>
                 </button>
