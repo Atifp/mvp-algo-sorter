@@ -241,23 +241,23 @@ const SelectionSort = () => {
                             <div>
                                 <Description description={algoDescription} />
                             </div>
-                            {/*<div>*/}
-                            {/*    <PseudoCodeSelection lineToHighlight={pseudoLine}></PseudoCodeSelection>*/}
-                            {/*</div>*/}
+                            <div>
+                                <PseudoCodeSelection lineToHighlight={pseudoLine}></PseudoCodeSelection>
+                            </div>
                         </div>
                     </div>
-                    {/*<div className="infoSectionMerge">*/}
-                    {/*    <div className="box">*/}
-                    {/*        <h2> Selection Sort</h2>*/}
-                    {/*        <p>Time Complexity: O(n2) </p>*/}
-                    {/*        <p>Description: </p>*/}
-                    {/*        <p>I'm trying to see what happens with this page</p>*/}
-                    {/*        <p>Testing all of it</p>*/}
-                    {/*    </div>*/}
-                    {/*    <div className="tabBlock">*/}
-                    {/*        <Tab algoName={"selectionSort"}></Tab>*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
+                    <div className="infoSectionMerge">
+                        <div className="box">
+                            <h2> Selection Sort</h2>
+                            <p>Time Complexity: O(n2) </p>
+                            <p>Description: </p>
+                            <p>I'm trying to see what happens with this page</p>
+                            <p>Testing all of it</p>
+                        </div>
+                        <div className="tabBlock">
+                            <Tab algoName={"selectionSort"}></Tab>
+                        </div>
+                    </div>
                 </div>
             )}
         </div>
