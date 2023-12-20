@@ -265,6 +265,49 @@ const implementations = {
         "            arr[j + 1] = arr[j]\n" +
         "            j = j - 1\n" +
         "        arr[j + 1] = key\n",
+    selectionSortC: "void selectionSort(int arr[], int n) {\n" +
+        "    int i, j, min_idx;\n" +
+        "    for (i = 0; i < n-1; i++) {\n" +
+        "        min_idx = i;\n" +
+        "        for (j = i+1; j < n; j++)\n" +
+        "            if (arr[j] < arr[min_idx])\n" +
+        "                min_idx = j;\n" +
+        "        int temp = arr[min_idx];\n" +
+        "        arr[min_idx] = arr[i];\n" +
+        "        arr[i] = temp;\n" +
+        "    }\n" +
+        "}\n",
+    selectionSortCpp: "void selectionSort(int arr[], int n) {\n" +
+        "    int i, j, min_idx;\n" +
+        "    for (i = 0; i < n-1; i++) {\n" +
+        "        min_idx = i;\n" +
+        "        for (j = i+1; j < n; j++)\n" +
+        "            if (arr[j] < arr[min_idx])\n" +
+        "                min_idx = j;\n" +
+        "        int temp = arr[min_idx];\n" +
+        "        arr[min_idx] = arr[i];\n" +
+        "        arr[i] = temp;\n" +
+        "    }\n" +
+        "}\n",
+    selectionSortJava: "static void selectionSort(int arr[]) {\n" +
+        "    int n = arr.length;\n" +
+        "    for (int i = 0; i < n-1; i++) {\n" +
+        "        int min_idx = i;\n" +
+        "        for (int j = i+1; j < n; j++)\n" +
+        "            if (arr[j] < arr[min_idx])\n" +
+        "                min_idx = j;\n" +
+        "        int temp = arr[min_idx];\n" +
+        "        arr[min_idx] = arr[i];\n" +
+        "        arr[i] = temp;\n" +
+        "    }\n" +
+        "}\n",
+    selectionSortPython: "def selectionSort(arr):\n" +
+        "    for i in range(len(arr)):\n" +
+        "        min_idx = i\n" +
+        "        for j in range(i+1, len(arr)):\n" +
+        "            if arr[j] < arr[min_idx]:\n" +
+        "                min_idx = j\n" +
+        "        arr[i], arr[min_idx] = arr[min_idx], arr[i]",
     // Add more algorithms as needed
 };
 

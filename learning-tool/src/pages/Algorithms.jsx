@@ -22,6 +22,11 @@ const Algorithms = () => {
                         <button >Insertion Sort</button>
                     </Link>
                 </div>
+                <div >
+                    <Link to="/selectionSort" >
+                        <button >Selection Sort</button>
+                    </Link>
+                </div>
                 <button >
                     <Link to="/">Back</Link>
                 </button>
