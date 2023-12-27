@@ -8,6 +8,7 @@ import reportWebVitals from './reportWebVitals'
 import MergeSort from './pages/MergeSort'
 import BubbleSort from './pages/BubbleSort'
 import InsertionSort from './pages/InsertionSort'
+import SelectionSort from './pages/SelectionSort'
 
 export default function App() {
     return (
@@ -18,6 +19,7 @@ export default function App() {
                     <Route path="bubbleSort" element={<BubbleSort />} />
                     <Route path="mergeSort" element={<MergeSort />} />
                     <Route path="insertionSort" element={<InsertionSort />} />
+                    <Route path="selectionSort" element={<SelectionSort />} />
                     <Route path="algorithms" element={<Algorithms />} />
                     <Route path="*" element={<NoPageFound />} />
                 </Route>

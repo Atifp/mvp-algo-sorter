@@ -21,7 +21,29 @@ R
 "learning-tool/src/pages/Layout.jsx,b/4/b4c0656e03a129a62ab5366bac89151374fb6e9d
 
 Olearning-tool/src/components/arrayChoiceButtons/generateArray/generateArray.css,7/4/74bd45bda1fd1c6a5c95633906e1131d81d7fbbf
-P
- learning-tool/src/pages/Home.jsx,8/f/8f10ac5da66577f068da3fe47ff4f65042bea46c
 y
 Ilearning-tool/src/components/arrayChoiceButtons/inputArray/inputArray.jsx,8/0/80d51f56a8a081b004c90e6e8d229ddb60817991
+y
+Ilearning-tool/src/components/arrayChoiceButtons/clearArray/clearArray.jsx,b/a/ba1c3dc133fc1c765b390581d0d2333d39d2d4cb
+p
+@learning-tool/src/components/ArrayVisualizer/ArrayVisualizer.jsx,5/8/581ae141c4a154f0d3b137840ca80236ac353d1d
+h
+8learning-tool/src/components/Description/Description.jsx,8/4/84c976dc44f454123bcf39c8e349883aa5368645
+h
+8learning-tool/src/components/Description/description.css,b/7/b7fdf8d048ee5ffda98d8a34dccc310313a40a68
+Y
+)learning-tool/src/components/Tabs/Tab.css,f/3/f3917bdc4c900f6a2d6f43b816a5c92565da7207
+p
+@learning-tool/src/components/ArrayVisualizer/arrayVisualiser.css,7/7/7756f2df4d1cd9f138baa74fbc6cc8e5d930795c
+I
+learning-tool/src/App.css,1/a/1a955ab1332ae95335f8c205aa8321713e0c8708
+U
+%learning-tool/src/pages/mergeSort.css,9/7/9783120a5ac4fd9257b6a06bf630a0c2f70d09b2
+V
+&learning-tool/src/pages/bubbleSort.css,9/e/9e40a35d1cd40182322e1f05dcae8e3b03ee2aa6
+
+Olearning-tool/src/components/arrayChoiceButtons/generateArray/generateArray.jsx,4/a/4a586dc7450d56eb8508ec0b6a1706fecd310fc1
+W
+'learning-tool/src/components/newBar.css,a/e/ae92e388e6db202e1b7222648213b5657e79358f
+P
+ learning-tool/src/pages/Home.jsx,8/f/8f10ac5da66577f068da3fe47ff4f65042bea46c
