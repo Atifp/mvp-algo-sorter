@@ -35,8 +35,7 @@
 }
 
 .containerQuiz button{
-    margin: auto;
-    width: 100px;
+    width: 150px;
     height: 30px;
     background: #d17f3f;
     color: white;
@@ -45,6 +44,12 @@
     border: none;
     cursor: pointer;
     font-family: 'Poppins', sans-serif;
+    margin: auto auto 40px;
+}
+
+.containerQuiz button:hover{
+    border-color: #222222;
+    background: rgba(243, 211, 9, 0.98);
 }
 
 .containerQuiz .index{
@@ -60,4 +65,21 @@
 .containerQuiz .incorrect{
     border-color: #FF0000;
     background: #FF6666;
+}
+
+.containerQuiz .selected{
+    border-color: #00ea02;
+    background-color: #7802f5;
+}
+
+.containerQuiz div {
+    display: flex;
+    justify-content: space-between;  /* Adjust as needed for your layout */
+    align-items: center;  /* Adjust as needed for your layout */
+}
+.containerQuiz h1{
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid black;
 }

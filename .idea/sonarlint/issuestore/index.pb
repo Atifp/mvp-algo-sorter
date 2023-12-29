@@ -87,3 +87,5 @@ a
 .learning-tool/src/pages/Quiz/bubbleSortData.js,1/b/1beee23913873e1717e1e24aadb7e50fdf15249f
 S
 #.idea/sonarlint/issuestore/index.pb,9/f/9fe84ebb15faf917b7def6236dba604453cc61e0
+V
+&learning-tool/src/pages/Quiz/Quiz2.jsx,8/b/8b98edcf538f1f029f22add48a4258ee53b4c6f8
