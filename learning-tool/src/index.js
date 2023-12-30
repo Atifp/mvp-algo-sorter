@@ -9,6 +9,7 @@ import MergeSort from './pages/MergeSort'
 import BubbleSort from './pages/BubbleSort'
 import InsertionSort from './pages/InsertionSort'
 import SelectionSort from './pages/SelectionSort'
+import Quiz from './pages/Quiz/Quiz'
 
 export default function App() {
     return (
@@ -21,6 +22,7 @@ export default function App() {
                     <Route path="insertionSort" element={<InsertionSort />} />
                     <Route path="selectionSort" element={<SelectionSort />} />
                     <Route path="algorithms" element={<Algorithms />} />
+                    <Route path="quiz" element={<Quiz />} />
                     <Route path="*" element={<NoPageFound />} />
                 </Route>
             </Routes>
