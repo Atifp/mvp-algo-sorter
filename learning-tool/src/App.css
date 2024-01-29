@@ -10,7 +10,7 @@
   display: flex;
   width:100%;
   position: absolute;
-  top: 15%;
+  top: 16%;
 }
 
 .inputButton, .select, .generate {
@@ -80,4 +80,52 @@
   height: 30%;
   margin-left: 180px; /* Push the tabBlock to the right */
   font-family: 'Ubuntu', monospace, Courier;
+}
+
+.greenButton {
+  background: none;
+  color: green;
+  border: 1px solid green;
+  width: 80px;
+  height: 20px;
+  font-family: 'Oxygen', monospace, Courier;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.greenButton:hover{
+  border-color: white;
+  color: white;
+}
+
+.orangeButton {
+  background: none;
+  color: orange;
+  border: 1px solid orange;
+  width: 80px;
+  height: 20px;
+  font-family: 'Oxygen', monospace, Courier;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.orangeButton:hover{
+  border-color: white;
+  color: white;
+}
+
+.redButton {
+  background: none;
+  color: red;
+  border: 1px solid red;
+  width: 80px;
+  height: 20px;
+  font-family: 'Oxygen', monospace, Courier;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.redButton:hover{
+  border-color: white;
+  color: white;
 }

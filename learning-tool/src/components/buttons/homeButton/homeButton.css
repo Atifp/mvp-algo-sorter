@@ -1,15 +1,15 @@
 .homeButton {
     cursor: pointer;
-    background: #282c34;
+    background: none;
     position: absolute;
     display: inline-flex;
+    top: 21%;
+    left: 0.5%;
     border: none;
-    padding-left: 15px;
-    padding-top: 15px;
 }
 
 .homeButton:hover {
-    background-color: gray;
+    opacity: 50%;
 }
 
 .header {
@@ -23,5 +23,4 @@
 .header-text {
     padding-left: 100px;
     color: white;
-
 }

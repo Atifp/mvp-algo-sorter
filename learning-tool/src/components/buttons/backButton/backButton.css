@@ -1,0 +1,14 @@
+.backButton {
+    cursor: pointer;
+    background: none;
+    position: absolute;
+    display: inline-flex;
+    border-color: #d17f3f;
+    top: 1.5%;
+    right: 3%;
+}
+
+.backButton:hover {
+    border-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added box-shadow on hover */
+}

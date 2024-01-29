@@ -7,30 +7,46 @@
     }
 }
 
-.mainTitle {
-    font-family: 'Oxygen', monospace, Courier;
-    color: white;
-    font-size: 110px;
-    transform-origin: left;
-    animation: sortAnimation 1.5s ease-out; /* Adjust the duration and timing function as needed */
-}
-
 .collectedTitle {
     white-space: pre-line;
-    display: inline-flex;
     position: absolute;
-    top: 24%;
-    left: 36%;
+    top: 20%;
+    left: 70%;
+    transform: translateX(-50%);
     padding-right: 15px;
     letter-spacing: 5px;
     text-align: right;
     font-weight: bold;
     border-right: 4px solid #d17f3f;
-    overflow: hidden; /* Ensure the border doesn't get cut off */
+    overflow: hidden;
+}
+
+.mainTitle {
+    font-family: 'Oxygen', monospace, Courier;
+    color: white;
+    font-size: 110px;
+    transform-origin: left;
+    animation: sortAnimation 1.5s ease-out;
 }
 
 .sortingAlgoButton {
     position: absolute;
-    top: 15%;
-    left: 3%;
+    top: 55%;
+    left: 20%;
+    font-size: 40px;
+    transform: translate(-50%, -50%);
+    padding: 250px 100px;
+    border: 2px solid #d17f3f;
+    border-radius: 20px;
+    background-color: #f67006; /* Choose a background color */
+    color: white;
+    font-family: 'Oxygen', monospace, Courier;
+    cursor: pointer;
+    transition: background-color 0.3s, opacity 0.3s, border-color 0.3s;
+}
+
+.sortingAlgoButton:hover {
+    background-color: #f800ea; /* Change to a different color on hover */
+    border-color: #3aec2c;
+    opacity: 0.8; /* Adjust opacity on hover */
 }
