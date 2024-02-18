@@ -215,11 +215,11 @@ export const mediumInsertionData = [
 
 export const hardInsertionData = [
     {
-        question: "Compare and contrast Insertion Sort with the Quick Sort algorithm, highlighting their strengths and weaknesses.",
-        option1: "Advantages: Insertion Sort is more memory-efficient; Quick Sort is faster for large lists; Disadvantages: Insertion Sort is slower; Quick Sort requires more memory",
+        question: "Compare and contrast Insertion Sort with Merge Sort algorithm, highlighting their strengths and weaknesses.",
+        option1: "Advantages: Insertion Sort is more memory-efficient; Merge Sort is faster for large lists; Disadvantages: Insertion Sort is slower; Merge Sort requires more memory",
         option2: "Advantages: Both have high time complexity; Disadvantages: Both are equally efficient",
-        option3: "Advantages: Quick Sort is more memory-efficient; Insertion Sort is faster for large lists; Disadvantages: Quick Sort is slower; Insertion Sort requires more memory",
-        option4: "Advantages: Insertion Sort is faster; Quick Sort is more memory-efficient; Disadvantages: Insertion Sort is slower; Quick Sort requires more memory",
+        option3: "Advantages: Merge Sort is more memory-efficient; Insertion Sort is faster for large lists; Disadvantages: Merge Sort is slower; Insertion Sort requires more memory",
+        option4: "Advantages: Insertion Sort is faster; Merge Sort is more memory-efficient; Disadvantages: Insertion Sort is slower; Merge Sort requires more memory",
         ans: 1,
     },
     {

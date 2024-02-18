@@ -246,10 +246,10 @@ const SelectionSort = () => {
                     <div className="infoSectionMerge">
                         <div className="box">
                             <h2> Selection Sort</h2>
-                            <p>Time Complexity: O(n2) </p>
-                            <p>Description: </p>
-                            <p>I'm trying to see what happens with this page</p>
-                            <p>Testing all of it</p>
+                            <p>Time Complexity: O(n<span className="superscript">2</span>)</p>
+                            <p>Description: Selection Sort works by dividing the array into a sorted and an unsorted region. It repeatedly selects the smallest (or largest) element from the unsorted region and swaps it with the first unsorted element. While simple, its time complexity makes it less efficient for large datasets.</p>
+                            <p>Use Cases: Selection Sort is suitable for small datasets or when memory is limited due to its simplicity and in-place nature.</p>
+                            <p>Drawbacks: Inefficient for large datasets; not suitable for already partially sorted arrays.</p>
                         </div>
                         <div className="tabBlock">
                             <Tab algoName={"selectionSort"}></Tab>
