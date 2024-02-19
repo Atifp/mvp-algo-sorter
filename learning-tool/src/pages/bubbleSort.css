@@ -8,12 +8,6 @@
     margin-top: 10px;
 }
 
-.backButton {
-    position: absolute;
-    top: 1%;
-    right: 1%;
-}
-
 .chart {
     margin: auto;
     width: 800px;
@@ -30,7 +24,7 @@
     justify-content: center;
     position: absolute;
     top: 91%;
-    right: 25%;
+    right: 10%;
 }
 
 .sorting-visualizer {

@@ -1,9 +1,9 @@
 .PseudoCode {
     right: 2%;
-    top: 38%;
+    top: 36%;
     position: absolute;
     float: right;
-    font-size: 21px;
+    font-size: 20px;
     border: 3px solid purple; /* Combined border shorthand */
     border-radius: 10px; /* Adjust the radius as needed */
     color: white;

@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import "../index.css"
-import HomeButton from '../components/buttons/homeButton'
+import HomeButton from '../components/buttons/homeButton/homeButton'
 const Layout = () => {
     return(
         <>

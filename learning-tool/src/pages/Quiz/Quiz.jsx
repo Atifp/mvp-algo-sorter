@@ -4,6 +4,7 @@ import { easyBubbleData, mediumBubbleData, hardBubbleData,
         easyMergeData, mediumMergeData, hardMergeData,
         easySelectionData, mediumSelectionData, hardSelectionData,
         easyInsertionData, mediumInsertionData, hardInsertionData} from './data'
+import BackButton from '../../components/buttons/backButton/backButton'
 const Quiz = () => {
     let [index, setIndex] = useState(0);
     let [score, setScore] = useState(0);
@@ -157,56 +158,59 @@ const Quiz = () => {
     };
 
     return (
-        <div className='containerQuiz'>
-            {!start?
-                <>
-                    <h1>Choose a difficulty level:</h1>
-                    <div>
-                        <button ref={Easy} onClick={(e) => checkSelectedLevel(e, "Easy")} > Easy </button>
-                        <button ref={Medium} onClick={(e) => checkSelectedLevel(e, "Medium")} > Medium </button>
-                        <button ref={Hard} onClick={(e) => checkSelectedLevel(e, "Hard")} > Hard </button>
-                    </div>
-                    <h1>Choose an Algorithm:</h1>
-                    <div>
-                        <button ref={BubbleSort} onClick={(e) => checkSelectedAlgo(e, "BubbleSort")} > Bubble Sort </button>
-                        <button ref={SelectionSort} onClick={(e) => checkSelectedAlgo(e, "SelectionSort")} > Selection Sort </button>
-                        <button ref={MergeSort} onClick={(e) => checkSelectedAlgo(e, "MergeSort")} > Merge Sort </button>
-                        <button ref={InsertionSort} onClick={(e) => checkSelectedAlgo(e, "InsertionSort")} > Insertion Sort </button>
-                    </div>
-                    {(chooseAlgo && chooseLevel)?
-                        <button className="start" onClick={(e) => startQuiz(selectedLevel, selectedAlgo)}>
-                        Start Quiz
-                        </button>
-                        :""}
-                </>
-                :
-                <>
-                    {!finished?
-                        <>
-                            <h2>{index+1}. {question.question}</h2>
-                            <ul>
-                                <li ref={Option1} onClick={(e) => checkAns(e,1)}>{question.option1}</li>
-                                <li ref={Option2} onClick={(e) => checkAns(e,2)}>{question.option2}</li>
-                                <li ref={Option3} onClick={(e) => checkAns(e,3)}>{question.option3}</li>
-                                <li ref={Option4} onClick={(e) => checkAns(e,4)}>{question.option4}</li>
-                            </ul>
-                            <button onClick={next} disabled={!lock}>Next</button>
-                            <div className="index">
-                                {index+1} of {5} questions
-                            </div>
-                        </>
-                        :
-                        <>
-                            <h1>Quiz Results</h1>
-                            <h2>Your Score: {score} out of 5</h2>
-                            <div>
-                                <button onClick={resetQuiz}>Reset</button>
-                                <button onClick={newQuiz}>New Quiz</button>
-                            </div>
-                        </>
-                    }
-                </>
-            }
+        <div>
+            <BackButton path="/algorithms"></BackButton>
+            <div className='containerQuiz'>
+                {!start?
+                    <>
+                        <h1>Choose a difficulty level:</h1>
+                        <div>
+                            <button ref={Easy} onClick={(e) => checkSelectedLevel(e, "Easy")} > Easy </button>
+                            <button ref={Medium} onClick={(e) => checkSelectedLevel(e, "Medium")} > Medium </button>
+                            <button ref={Hard} onClick={(e) => checkSelectedLevel(e, "Hard")} > Hard </button>
+                        </div>
+                        <h1>Choose an Algorithm:</h1>
+                        <div>
+                            <button ref={BubbleSort} onClick={(e) => checkSelectedAlgo(e, "BubbleSort")} > Bubble Sort </button>
+                            <button ref={SelectionSort} onClick={(e) => checkSelectedAlgo(e, "SelectionSort")} > Selection Sort </button>
+                            <button ref={MergeSort} onClick={(e) => checkSelectedAlgo(e, "MergeSort")} > Merge Sort </button>
+                            <button ref={InsertionSort} onClick={(e) => checkSelectedAlgo(e, "InsertionSort")} > Insertion Sort </button>
+                        </div>
+                        {(chooseAlgo && chooseLevel)?
+                            <button className="start" onClick={(e) => startQuiz(selectedLevel, selectedAlgo)}>
+                                Start Quiz
+                            </button>
+                            :""}
+                    </>
+                    :
+                    <>
+                        {!finished?
+                            <>
+                                <h2>{index+1}. {question.question}</h2>
+                                <ul>
+                                    <li ref={Option1} onClick={(e) => checkAns(e,1)}>{question.option1}</li>
+                                    <li ref={Option2} onClick={(e) => checkAns(e,2)}>{question.option2}</li>
+                                    <li ref={Option3} onClick={(e) => checkAns(e,3)}>{question.option3}</li>
+                                    <li ref={Option4} onClick={(e) => checkAns(e,4)}>{question.option4}</li>
+                                </ul>
+                                <button onClick={next} disabled={!lock}>Next</button>
+                                <div className="index">
+                                    {index+1} of {5} questions
+                                </div>
+                            </>
+                            :
+                            <>
+                                <h1>Quiz Results</h1>
+                                <h2>Your Score: {score} out of 5</h2>
+                                <div>
+                                    <button onClick={resetQuiz}>Reset</button>
+                                    <button onClick={newQuiz}>New Quiz</button>
+                                </div>
+                            </>
+                        }
+                    </>
+                }
+            </div>
         </div>
     )
 };

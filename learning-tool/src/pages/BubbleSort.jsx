@@ -1,7 +1,6 @@
 import InputArray from '../components/arrayChoiceButtons/inputArray/inputArray'
 import {useEffect, useState} from 'react'
 import ArrayVisualizer from "../components/ArrayVisualizer/ArrayVisualizer";
-import {Link} from "react-router-dom";
 import GenerateArray from '../components/arrayChoiceButtons/generateArray/generateArray'
 import SelectArray from '../components/arrayChoiceButtons/selectArray/selectArray'
 import '../App.css'
@@ -9,6 +8,7 @@ import './bubbleSort.css'
 import PseudoCodeBubble from '../components/PseudoCode/PseudoCodeBubble'
 import Description from '../components/Description/Description'
 import Tab from '../components/Tabs/Tab'
+import BackButton from '../components/buttons/backButton/backButton'
 
 const BubbleSort = () => {
     const [array, setArray] = useState([137,76,175,292,90,50,74]);
@@ -43,8 +43,8 @@ const BubbleSort = () => {
         // see if indices can be replaced with sortArray.length
         const indices = sortArray.map((_, index) => index);
         let stepNum = 0;
-        myArray.push(createStep(stepNum, indices, array, "Running the array against Bubble Sort...", [1], 'rgba(0, 246, 246, 0.66)'));
-        myArray.push(createStep(stepNum, indices, array, "Checking the array and finding the first element", [2], 'rgba(0, 246, 246, 0.66)'));
+        myArray.push(createStep(stepNum, indices, array, "Running the array against Bubble Sort...", [1], 'rgba(0,246,246,0.85)'));
+        myArray.push(createStep(stepNum, indices, array, "Checking the array and finding the first element", [2], 'rgba(0,246,246,0.85)'));
         for (let i = 0; i < sortArray.length; i++) {
             // Last i elements are already in place
             for (let j = 0; j < sortArray.length - i - 1; j++) {
@@ -167,11 +167,7 @@ const BubbleSort = () => {
             <div className="visualAlgo">
                 <ArrayVisualizer setArray={setArray} setArraySize={setArraySize} fullArray={array}></ArrayVisualizer>
             </div>
-            <div >
-                <button  className="backButton" >
-                    <Link to="/algorithms">Back</Link>
-                </button>
-            </div>
+            <BackButton path="/algorithms"></BackButton>
             {showGraph && (
                 <div className="chart-container">
                     <div className="bubbleBars">
@@ -181,7 +177,7 @@ const BubbleSort = () => {
                                 key={idx}
                                 style={{
                                     height: `${value}px`,
-                                    backgroundColor: barColor && sortIndex.includes(idx) ? barColor : 'turquoise',
+                                    backgroundColor: barColor && sortIndex.includes(idx) ? barColor : 'rgba(0,246,246,0.85)',
                                 }}
                             >
                                 {value}
@@ -196,18 +192,18 @@ const BubbleSort = () => {
                             <PseudoCodeBubble lineToHighlight={pseudoLine}></PseudoCodeBubble>
                         </div>
                         <div className="bubbleControlButtons">
-                            <button onClick={sortArrayFully} disabled={showReset}>Sort</button>
-                            <button onClick={() => stepThroughSorting(false)} disabled={showReset}>Step</button>
-                            {showReset && <button onClick={resetArray}>Reset Array</button>}
+                            <button onClick={sortArrayFully} disabled={showReset} className="greenButton">Sort</button>
+                            <button onClick={() => stepThroughSorting(false)} disabled={showReset} className="orangeButton">Step</button>
+                            {showReset && <button onClick={resetArray} className="redButton">Reset</button>}
                         </div>
                     </div>
                     <div className="infoSectionBubble">
                         <div className="box">
                             <h2> Bubble Sort</h2>
-                            <p>Time Complexity: O(n2) </p>
-                            <p>Description: </p>
-                            <p>I'm trying to see what happens with this page</p>
-                            <p>Testing all of it</p>
+                            <p>Time Complexity: O(n<span className="superscript">2</span>)</p>
+                            <p>Description: Bubble Sort repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. While easy to understand and implement, it is not the most efficient sorting algorithm and is mainly used for educational purposes.</p>
+                            <p>Use Cases: Bubble Sort is suitable for small datasets or nearly sorted datasets due to its simplicity, but it is inefficient for large datasets.</p>
+                            <p>Drawbacks: Inefficient for large datasets; sensitivity to initial order.</p>
                         </div>
                         <div className="tabBlock">
                             <Tab algoName={"bubbleSort"}></Tab>

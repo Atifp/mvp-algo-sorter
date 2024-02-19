@@ -29,8 +29,8 @@
     gap: 10px; /* Adjust this value to change the spacing */
     justify-content: center;
     position: absolute;
-    top: 90%;
-    left: 50%;
+    top: 96%;
+    left: 70%;
 }
 
 .button-container {

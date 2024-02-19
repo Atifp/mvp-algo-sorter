@@ -11,6 +11,7 @@ import Tab from '../components/Tabs/Tab'
 import {Link} from 'react-router-dom'
 import ArrayVisualizer from '../components/ArrayVisualizer/ArrayVisualizer'
 import PseudoCodeSelection from '../components/PseudoCode/PseudoCodeSelection'
+import BackButton from '../components/buttons/backButton/backButton'
 
 const SelectionSort = () => {
     const [array, setArray] = useState([137,76,175,292,90,50,74]);
@@ -211,11 +212,7 @@ const SelectionSort = () => {
             <div className="visualAlgo">
                 <ArrayVisualizer setArray={setArray} setArraySize={setArraySize} fullArray={array}></ArrayVisualizer>
             </div>
-            <div >
-                <button  className="backButton" >
-                    <Link to="/algorithms">Back</Link>
-                </button>
-            </div>
+            <BackButton path="/algorithms"></BackButton>
             {showGraph && (
                 <div className="chart-holder">
                     <div className="bars">
@@ -233,9 +230,9 @@ const SelectionSort = () => {
                             </div>
                         ))}
                         <div className="controlButtons">
-                            <button disabled={showReset} onClick={sortArray}>Sort</button>
-                            <button disabled={showReset} onClick={() => stepThroughSorting(false)}>Step</button>
-                            {showReset && <button onClick={resetArray}>Reset Array</button>}
+                            <button disabled={showReset} onClick={sortArray} className="greenButton">Sort</button>
+                            <button disabled={showReset} onClick={() => stepThroughSorting(false)} className="orangeButton">Step</button>
+                            {showReset && <button onClick={resetArray} className="redButton">Reset</button>}
                         </div>
                         <div className="content-container">
                             <div>
@@ -249,10 +246,10 @@ const SelectionSort = () => {
                     <div className="infoSectionMerge">
                         <div className="box">
                             <h2> Selection Sort</h2>
-                            <p>Time Complexity: O(n2) </p>
-                            <p>Description: </p>
-                            <p>I'm trying to see what happens with this page</p>
-                            <p>Testing all of it</p>
+                            <p>Time Complexity: O(n<span className="superscript">2</span>)</p>
+                            <p>Description: Selection Sort works by dividing the array into a sorted and an unsorted region. It repeatedly selects the smallest (or largest) element from the unsorted region and swaps it with the first unsorted element. While simple, its time complexity makes it less efficient for large datasets.</p>
+                            <p>Use Cases: Selection Sort is suitable for small datasets or when memory is limited due to its simplicity and in-place nature.</p>
+                            <p>Drawbacks: Inefficient for large datasets; not suitable for already partially sorted arrays.</p>
                         </div>
                         <div className="tabBlock">
                             <Tab algoName={"selectionSort"}></Tab>

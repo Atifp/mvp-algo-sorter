@@ -10,6 +10,7 @@ import PseudoCodeMerge from '../components/PseudoCode/PseudoCodeMerge'
 import Tab from '../components/Tabs/Tab'
 import {Link} from 'react-router-dom'
 import ArrayVisualizer from '../components/ArrayVisualizer/ArrayVisualizer'
+import BackButton from '../components/buttons/backButton/backButton'
 
 const MergeSort = () => {
     const [array, setArray] = useState([137,76,175,292,90,50,74]);
@@ -251,11 +252,7 @@ const MergeSort = () => {
             <div className="visualAlgo">
                 <ArrayVisualizer setArray={setArray} setArraySize={setArraySize} fullArray={array}></ArrayVisualizer>
             </div>
-            <div >
-                <button  className="backButton" >
-                    <Link to="/algorithms">Back</Link>
-                </button>
-            </div>
+            <BackButton path="/algorithms"></BackButton>
             {showGraph && (
                 <div className="chart-holder">
                     <div className="bars">
@@ -273,9 +270,9 @@ const MergeSort = () => {
                             </div>
                         ))}
                         <div className="controlButtons">
-                            <button disabled={showReset} onClick={() => stepThrough(algoSteps, true)}>Sort</button>
-                            <button disabled={showReset} onClick={() => stepThrough(algoSteps, false)}>Step</button>
-                            {showReset && <button onClick={resetArray}>Reset Array</button>}
+                            <button disabled={showReset} onClick={() => stepThrough(algoSteps, true)} className="greenButton">Sort</button>
+                            <button disabled={showReset} onClick={() => stepThrough(algoSteps, false)} className="orangeButton">Step</button>
+                            {showReset && <button onClick={resetArray} className="redButton">Reset</button>}
                         </div>
                         <div className="content-container">
                             <div>
@@ -288,11 +285,11 @@ const MergeSort = () => {
                     </div>
                     <div className="infoSectionMerge">
                         <div className="box">
-                            <h2> Merge Sort</h2>
-                            <p>Time Complexity: O(n2) </p>
-                            <p>Description: </p>
-                            <p>I'm trying to see what happens with this page</p>
-                            <p>Testing all of it</p>
+                            <h2>Merge Sort</h2>
+                            <p>Time Complexity: O(n log n)</p>
+                            <p>Description: Merge Sort works by recursively dividing the array into halves, sorting each half, and then merging the sorted halves. Its predictable time complexity makes it suitable for a wide range of applications, especially when stability and consistent performance are important.</p>
+                            <p>Use Cases: Merge Sort is efficient for large datasets and provides stable, consistent performance across different input scenarios.</p>
+                            <p>Drawbacks: Additional space requirement for merging; may not be the most efficient for small datasets due to its recursive nature.</p>
                         </div>
                         <div className="tabBlock">
                             <Tab algoName={"mergeSort"}></Tab>

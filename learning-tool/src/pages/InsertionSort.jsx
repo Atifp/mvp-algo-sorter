@@ -8,8 +8,8 @@ import SelectArray from '../components/arrayChoiceButtons/selectArray/selectArra
 import Description from '../components/Description/Description'
 import PseudoCodeInsertion from '../components/PseudoCode/PseudoCodeInsertion'
 import Tab from '../components/Tabs/Tab'
-import {Link} from 'react-router-dom'
 import ArrayVisualizer from '../components/ArrayVisualizer/ArrayVisualizer'
+import BackButton from '../components/buttons/backButton/backButton'
 
 const InsertionSort = () => {
     const [array, setArray] = useState([137,76,175,292,90,50,74]);
@@ -23,12 +23,6 @@ const InsertionSort = () => {
     const [pseudoLine, setPseudoLine] =  useState([]);
     const [showGraph, setShowGraph] = useState(false);
     const [showReset, setShowReset] = useState(false);
-
-    const ANIMATION_SPEED_MS = 100;
-    // This is the main color of the array bars.
-    const PRIMARY_COLOR = 'turquoise';
-    // This is the color of array bars that are being compared throughout the animations.
-    const SECONDARY_COLOR = 'red';
 
     const createInsertionStep = (stepNumber, arrayOfBars, newArray, algoDescription, pseudoLine, barColor) => {
         return {
@@ -49,11 +43,11 @@ const InsertionSort = () => {
         const indices = sortArray.map((_, index) => index);
         let stepNum = 0;
 
-        myArray.push(createInsertionStep(stepNum, indices, array, "Running the array against Insertion Sort...", [1], 'rgba(0, 246, 246, 0.66)'));
+        myArray.push(createInsertionStep(stepNum, indices, array, "Running the array against Insertion Sort...", [1], 'rgba(0,246,246,0.85)'));
 
         for (let i = 1; i < sortArray.length; i++) {
             const sortArray2 = [...sortArray];
-            myArray.push(createInsertionStep(stepNum, indices, sortArray2, "Getting the ith element in the array", [2,3], 'rgba(0, 246, 246, 0.66)'));
+            myArray.push(createInsertionStep(stepNum, indices, sortArray2, "Getting the ith element in the array", [2,3], 'rgba(0,246,246,0.85)'));
             const key = sortArray[i];
             myArray.push(createInsertionStep(stepNum, [i], sortArray2, `Checking position of key with value ${sortArray[i]}`, [2,3], 'rgba(246,168,0,0.98)'));
             let j = i - 1;
@@ -138,7 +132,7 @@ const InsertionSort = () => {
         for (let j = 0; j < array.length; j++) {
             const arrayBars = document.getElementsByClassName('array-bar');
             const styleOfBar = arrayBars[j].style;
-            styleOfBar.backgroundColor = PRIMARY_COLOR;
+            styleOfBar.backgroundColor = 'rgba(0,246,246,0.85)';
             styleOfBar.height = `${initialArray[j]}px`;
             arrayBars[j].textContent = initialArray[j];
         }
@@ -179,11 +173,7 @@ const InsertionSort = () => {
             <div className="visualAlgo">
                 <ArrayVisualizer setArray={setArray} setArraySize={setArraySize} fullArray={array}></ArrayVisualizer>
             </div>
-            <div >
-                <button  className="backButton" >
-                    <Link to="/algorithms">Back</Link>
-                </button>
-            </div>
+            <BackButton path="/algorithms"></BackButton>
             {showGraph && (
                 <div className="chart-holder">
                     <div className="bars">
@@ -193,16 +183,16 @@ const InsertionSort = () => {
                                 key={idx}
                                 style={{
                                     height: `${value}px`,
-                                    backgroundColor: barColor && sortIndex.includes(idx) ? barColor : 'rgba(0, 246, 246, 0.66)',
+                                    backgroundColor: barColor && sortIndex.includes(idx) ? barColor : 'rgba(0,246,246,0.85)',
                                 }}
                             >
                                 {value}
                             </div>
                         ))}
                         <div className="controlButtons">
-                            <button disabled={showReset} onClick={sortArray}>Sort</button>
-                            <button disabled={showReset} onClick={() => stepThroughSorting(false)}>Step</button>
-                            {showReset && <button onClick={resetArray}>Reset Array</button>}
+                            <button disabled={showReset} onClick={sortArray} className="greenButton">Sort</button>
+                            <button disabled={showReset} onClick={() => stepThroughSorting(false)} className="orangeButton">Step</button>
+                            {showReset && <button onClick={resetArray} className="redButton">Reset</button>}
                         </div>
                         <div className="content-container">
                             <div>
@@ -216,10 +206,10 @@ const InsertionSort = () => {
                     <div className="infoSectionMerge">
                         <div className="box">
                             <h2> Insertion Sort</h2>
-                            <p>Time Complexity: O(n2) </p>
-                            <p>Description: </p>
-                            <p>I'm trying to see what happens with this page</p>
-                            <p>Testing all of it</p>
+                            <p>Time Complexity: O(n<span className="superscript">2</span>)</p>
+                            <p>Description: Insertion Sort builds the sorted array one element at a time by repeatedly taking an element from the unsorted part and inserting it into its correct position. While efficient for small or partially sorted datasets, its time complexity makes it less suitable for large datasets.</p>
+                            <p>Use Cases: Insertion Sort is suitable for small datasets or mostly sorted datasets due to its simplicity and adaptive nature.</p>
+                            <p>Drawbacks: Inefficient for large datasets; not suitable for random or reverse-sorted arrays.</p>
                         </div>
                         <div className="tabBlock">
                             <Tab algoName={"insertionSort"}></Tab>

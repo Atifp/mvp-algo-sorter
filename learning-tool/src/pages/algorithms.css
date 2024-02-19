@@ -1,0 +1,19 @@
+.algo-container{
+    position: absolute;
+    top: 13%;
+    left: 2%;
+    font-weight: bold;
+    color: white;
+    font-family: 'Oxygen', monospace, Courier;
+    text-align: center;
+    padding: 20px;
+}
+
+.algo-cards {
+    position: absolute;
+    top: 27%;
+    left: 15%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns in one row */
+    gap: 20px; /* Adjust the gap between cards as needed */
+}
