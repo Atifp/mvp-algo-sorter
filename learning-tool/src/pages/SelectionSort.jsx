@@ -147,7 +147,7 @@ const SelectionSort = () => {
                     break;
                 }
             }
-            if (currentStep.pseudoLine[0] === 10){
+            if (currentStep.pseudoLine[1] === 10){
                 setShowReset(true)
             }
         }
