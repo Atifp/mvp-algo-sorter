@@ -270,8 +270,8 @@ const MergeSort = () => {
                             </div>
                         ))}
                         <div className="controlButtons">
-                            <button disabled={showReset} onClick={() => stepThrough(algoSteps, true)} className="greenButton">Sort</button>
-                            <button disabled={showReset} onClick={() => stepThrough(algoSteps, false)} className="orangeButton">Step</button>
+                            <button disabled={showReset} onClick={() => stepThrough(algoSteps, true)} className="greenButton" data-testid="sort-button">Sort</button>
+                            <button disabled={showReset} onClick={() => stepThrough(algoSteps, false)} className="orangeButton" data-testid="step-button">Step</button>
                             {showReset && <button onClick={resetArray} className="redButton">Reset</button>}
                         </div>
                         <div className="content-container">

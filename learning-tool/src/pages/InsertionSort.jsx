@@ -190,8 +190,8 @@ const InsertionSort = () => {
                             </div>
                         ))}
                         <div className="controlButtons">
-                            <button disabled={showReset} onClick={sortArray} className="greenButton">Sort</button>
-                            <button disabled={showReset} onClick={() => stepThroughSorting(false)} className="orangeButton">Step</button>
+                            <button disabled={showReset} onClick={sortArray} className="greenButton" data-testid="sort-button">Sort</button>
+                            <button disabled={showReset} onClick={() => stepThroughSorting(false)} className="orangeButton" data-testid="step-button">Step</button>
                             {showReset && <button onClick={resetArray} className="redButton">Reset</button>}
                         </div>
                         <div className="content-container">
