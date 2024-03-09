@@ -6,9 +6,7 @@ import InputArray from '../components/arrayChoiceButtons/inputArray/inputArray'
 import GenerateArray from '../components/arrayChoiceButtons/generateArray/generateArray'
 import SelectArray from '../components/arrayChoiceButtons/selectArray/selectArray'
 import Description from '../components/Description/Description'
-import PseudoCodeInsertion from '../components/PseudoCode/PseudoCodeInsertion'
 import Tab from '../components/Tabs/Tab'
-import {Link} from 'react-router-dom'
 import ArrayVisualizer from '../components/ArrayVisualizer/ArrayVisualizer'
 import PseudoCodeSelection from '../components/PseudoCode/PseudoCodeSelection'
 import BackButton from '../components/buttons/backButton/backButton'
@@ -26,7 +24,6 @@ const SelectionSort = () => {
     const [showGraph, setShowGraph] = useState(false);
     const [showReset, setShowReset] = useState(false);
 
-    const ANIMATION_SPEED_MS = 100;
     // This is the main color of the array bars.
     const PRIMARY_COLOR = 'turquoise';
     // This is the color of array bars that are being compared throughout the animations.
@@ -83,35 +80,6 @@ const SelectionSort = () => {
         return myArray;
     }
 
-    function helperSteps(tester, myArray) {
-        for (let i = 0; i < array.length; i++) {
-            let minIndex = i;
-            myArray.push(createStep([minIndex], tester, `Set bar ${tester[minIndex]} as min index`, [3], SECONDARY_COLOR));
-
-            for (let j = i + 1; j < array.length; j++) {
-                myArray.push(createStep([minIndex,j], tester, `Comparing bar ${tester[minIndex]} and bar ${tester[j]}`, [4,5], SECONDARY_COLOR));
-                if (tester[j] < tester[minIndex]) {
-                    minIndex = j;
-                    myArray.push(createStep([minIndex], tester, `Set bar ${tester[minIndex]} as min index`, [6], SECONDARY_COLOR));
-                }
-            }
-
-            myArray.push(createStep([minIndex], tester, `Selecting the minimum element ${tester[minIndex]}`, [6], "red"));
-            const swapArray = [...tester];
-            const temp = swapArray[minIndex];
-            swapArray[minIndex] = swapArray[i];
-            swapArray[i] = temp;
-
-            if (i !== minIndex) {
-                myArray.push(createStep([minIndex, i], tester, `Swapping elements ${tester[minIndex]} and ${tester[i]}`, [7, 8], "red"));
-                myArray.push(createStep([minIndex, i], swapArray, `Elements ${swapArray[minIndex]} and ${swapArray[i]} are swapped`, [7, 8], "green"));
-            } else {
-                myArray.push(createStep([i], tester, `Bar ${tester[minIndex]} in the correct position`, [7, 8], "green"));
-            }
-            tester = swapArray
-        }
-        return myArray;
-    }
 
     function sortArray() {
         let currentIndex = 0

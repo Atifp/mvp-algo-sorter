@@ -192,8 +192,8 @@ const BubbleSort = () => {
                             <PseudoCodeBubble lineToHighlight={pseudoLine}></PseudoCodeBubble>
                         </div>
                         <div className="bubbleControlButtons">
-                            <button onClick={sortArrayFully} disabled={showReset} className="greenButton">Sort</button>
-                            <button onClick={() => stepThroughSorting(false)} disabled={showReset} className="orangeButton">Step</button>
+                            <button onClick={sortArrayFully} disabled={showReset} className="greenButton" data-testid="sort-button">Sort</button>
+                            <button onClick={() => stepThroughSorting(false)} disabled={showReset} className="orangeButton" data-testid="step-button">Step</button>
                             {showReset && <button onClick={resetArray} className="redButton">Reset</button>}
                         </div>
                     </div>
