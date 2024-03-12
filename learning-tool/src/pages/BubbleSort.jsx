@@ -200,13 +200,40 @@ const BubbleSort = () => {
                     <div className="infoSectionBubble">
                         <div className="box">
                             <h2> Bubble Sort</h2>
-                            <p>Time Complexity: O(n<span className="superscript">2</span>)</p>
                             <p>Description: Bubble Sort repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. While easy to understand and implement, it is not the most efficient sorting algorithm and is mainly used for educational purposes.</p>
                             <p>Use Cases: Bubble Sort is suitable for small datasets or nearly sorted datasets due to its simplicity, but it is inefficient for large datasets.</p>
                             <p>Drawbacks: Inefficient for large datasets; sensitivity to initial order.</p>
                         </div>
                         <div className="tabBlock">
                             <Tab algoName={"bubbleSort"}></Tab>
+                            <div>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th>Case</th>
+                                        <th>Time Complexity</th>
+                                        <th>Space Complexity</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>Best</td>
+                                        <td>O(1)</td>
+                                        <td>O(1)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Average</td>
+                                        <td>O(n<sup>2</sup>)</td>
+                                        <td>O(1)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Worst</td>
+                                        <td>O(n<sup>2</sup>)</td>
+                                        <td>O(1)</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

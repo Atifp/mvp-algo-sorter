@@ -86,11 +86,11 @@ export const mediumBubbleData = [
 
 export const hardBubbleData = [
     {
-        question: "Compare and contrast Bubble Sort with the Quick Sort algorithm, highlighting their strengths and weaknesses.",
-        option1: "Advantages: Bubble Sort is faster; Quick Sort is simpler; Disadvantages: Quick Sort requires more memory",
-        option2: "Advantages: Bubble Sort is simple; Quick Sort is faster for large lists; Disadvantages: Bubble Sort is inefficient for large lists; Quick Sort is more complex",
+        question: "Compare and contrast Bubble Sort with the Merge Sort algorithm, highlighting their strengths and weaknesses.",
+        option1: "Advantages: Bubble Sort is faster; Merge Sort is simpler; Disadvantages: Merge Sort requires more memory",
+        option2: "Advantages: Bubble Sort is simple; Merge Sort is faster for large lists; Disadvantages: Bubble Sort is inefficient for large lists; Merge Sort is more complex",
         option3: "Advantages: Both are equally efficient; Disadvantages: Both have high time complexity",
-        option4: "Advantages: Quick Sort is faster; Bubble Sort is more memory-efficient; Disadvantages: Quick Sort is more complex",
+        option4: "Advantages: Merge Sort is faster; Bubble Sort is more memory-efficient; Disadvantages: Merge Sort is more complex",
         ans: 2,
     },
     {
@@ -344,11 +344,11 @@ export const mediumMergeData = [
 
 export const hardMergeData = [
     {
-        question: "Compare and contrast Merge Sort with the Quick Sort algorithm, highlighting their strengths and weaknesses.",
-        option1: "Advantages: Merge Sort is more memory-efficient; Quick Sort is faster for large lists; Disadvantages: Merge Sort is slower; Quick Sort requires more memory",
+        question: "Compare and contrast Merge Sort with the Insertion Sort algorithm, highlighting their strengths and weaknesses.",
+        option1: "Advantages: Merge Sort is more memory-efficient; Insertion Sort is faster for large lists; Disadvantages: Merge Sort is slower; Insertion Sort requires more memory",
         option2: "Advantages: Both have high time complexity; Disadvantages: Both are equally efficient",
-        option3: "Advantages: Quick Sort is more memory-efficient; Merge Sort is faster for large lists; Disadvantages: Quick Sort is slower; Merge Sort requires more memory",
-        option4: "Advantages: Merge Sort is faster; Quick Sort is more memory-efficient; Disadvantages: Merge Sort is slower; Quick Sort requires more memory",
+        option3: "Advantages: Insertion Sort is more memory-efficient; Merge Sort is faster for large lists; Disadvantages: Insertion Sort is slower; Merge Sort requires more memory",
+        option4: "Advantages: Merge Sort is faster; Insertion Sort is more memory-efficient; Disadvantages: Merge Sort is slower; Insertion Sort requires more memory",
         ans: 1,
     },
     {
@@ -473,11 +473,11 @@ export const mediumSelectionData = [
 
 export const hardSelectionData = [
     {
-        question: "Compare and contrast Selection Sort with the Quick Sort algorithm, highlighting their strengths and weaknesses.",
+        question: "Compare and contrast Selection Sort with the Bubble Sort algorithm, highlighting their strengths and weaknesses.",
         option1: "Advantages: Both have high time complexity; Disadvantages: Both are equally efficient",
-        option2: "Advantages: Selection Sort is more memory-efficient; Quick Sort is faster for large lists; Disadvantages: Selection Sort is slower; Quick Sort requires more memory",
-        option3: "Advantages: Quick Sort is more memory-efficient; Selection Sort is faster for large lists; Disadvantages: Quick Sort is slower; Selection Sort requires more memory",
-        option4: "Advantages: Selection Sort is faster; Quick Sort is more memory-efficient; Disadvantages: Selection Sort is slower; Quick Sort requires more memory",
+        option2: "Advantages: Selection Sort is more memory-efficient; Bubble Sort is faster for large lists; Disadvantages: Selection Sort is slower; Bubble Sort requires more memory",
+        option3: "Advantages: Bubble Sort is more memory-efficient; Selection Sort is faster for large lists; Disadvantages: Bubble Sort is slower; Selection Sort requires more memory",
+        option4: "Advantages: Selection Sort is faster; Bubble Sort is more memory-efficient; Disadvantages: Selection Sort is slower; Bubble Sort requires more memory",
         ans: 2,
     },
     {

@@ -130,7 +130,13 @@
   color: white;
 }
 
-.superscript {
-  vertical-align: super;
-  font-size: smaller;
+table {
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 2px solid orange;
+  padding: 8px;
+  text-align: center;
+  font-size: 25px;
 }

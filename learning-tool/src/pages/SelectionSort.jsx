@@ -40,8 +40,6 @@ const SelectionSort = () => {
         }
     };
 
-    // Function to calculate steps for insertion sort
-    // Function to calculate steps for Quick Sort
     function calculateSelectionSteps() {
         let myArray = [];
         let copyArray = [...array];
@@ -214,13 +212,40 @@ const SelectionSort = () => {
                     <div className="infoSectionMerge">
                         <div className="box">
                             <h2> Selection Sort</h2>
-                            <p>Time Complexity: O(n<span className="superscript">2</span>)</p>
                             <p>Description: Selection Sort works by dividing the array into a sorted and an unsorted region. It repeatedly selects the smallest (or largest) element from the unsorted region and swaps it with the first unsorted element. While simple, its time complexity makes it less efficient for large datasets.</p>
                             <p>Use Cases: Selection Sort is suitable for small datasets or when memory is limited due to its simplicity and in-place nature.</p>
                             <p>Drawbacks: Inefficient for large datasets; not suitable for already partially sorted arrays.</p>
                         </div>
                         <div className="tabBlock">
                             <Tab algoName={"selectionSort"}></Tab>
+                            <div>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th>Case</th>
+                                        <th>Time Complexity</th>
+                                        <th>Space Complexity</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>Best</td>
+                                        <td>O(n<sup>2</sup>)</td>
+                                        <td>O(1)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Average</td>
+                                        <td>O(n<sup>2</sup>)</td>
+                                        <td>O(1)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Worst</td>
+                                        <td>O(n<sup>2</sup>)</td>
+                                        <td>O(1)</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

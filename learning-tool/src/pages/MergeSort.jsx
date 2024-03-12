@@ -286,13 +286,40 @@ const MergeSort = () => {
                     <div className="infoSectionMerge">
                         <div className="box">
                             <h2>Merge Sort</h2>
-                            <p>Time Complexity: O(n log n)</p>
                             <p>Description: Merge Sort works by recursively dividing the array into halves, sorting each half, and then merging the sorted halves. Its predictable time complexity makes it suitable for a wide range of applications, especially when stability and consistent performance are important.</p>
                             <p>Use Cases: Merge Sort is efficient for large datasets and provides stable, consistent performance across different input scenarios.</p>
                             <p>Drawbacks: Additional space requirement for merging; may not be the most efficient for small datasets due to its recursive nature.</p>
                         </div>
                         <div className="tabBlock">
                             <Tab algoName={"mergeSort"}></Tab>
+                            <div>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th>Case</th>
+                                        <th>Time Complexity</th>
+                                        <th>Space Complexity</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>Best</td>
+                                        <td>O(n log n)</td>
+                                        <td>O(n)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Average</td>
+                                        <td>O(n log n)</td>
+                                        <td>O(n)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Worst</td>
+                                        <td>O(n log n)</td>
+                                        <td>O(n)</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

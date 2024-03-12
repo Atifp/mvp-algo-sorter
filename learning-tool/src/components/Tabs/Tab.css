@@ -6,11 +6,11 @@
     width: 600px;
     height: 400px;
     background: black;
-    margin: 20px auto 0;
     word-break: break-all;
     border: 1px solid orange;
     border-radius: 10px; /* Rounded corners */
     overflow: auto; /* Ensure the border doesn't get cut off */
+    margin: 20px auto;
 }
 
 .bloc-tabs {

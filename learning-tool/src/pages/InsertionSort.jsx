@@ -206,13 +206,40 @@ const InsertionSort = () => {
                     <div className="infoSectionMerge">
                         <div className="box">
                             <h2> Insertion Sort</h2>
-                            <p>Time Complexity: O(n<span className="superscript">2</span>)</p>
                             <p>Description: Insertion Sort builds the sorted array one element at a time by repeatedly taking an element from the unsorted part and inserting it into its correct position. While efficient for small or partially sorted datasets, its time complexity makes it less suitable for large datasets.</p>
                             <p>Use Cases: Insertion Sort is suitable for small datasets or mostly sorted datasets due to its simplicity and adaptive nature.</p>
                             <p>Drawbacks: Inefficient for large datasets; not suitable for random or reverse-sorted arrays.</p>
                         </div>
                         <div className="tabBlock">
                             <Tab algoName={"insertionSort"}></Tab>
+                            <div>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th>Case</th>
+                                        <th>Time Complexity</th>
+                                        <th>Space Complexity</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>Best</td>
+                                        <td>O(n)</td>
+                                        <td>O(1)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Average</td>
+                                        <td>O(n<sup>2</sup>)</td>
+                                        <td>O(1)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Worst</td>
+                                        <td>O(n<sup>2</sup>)</td>
+                                        <td>O(1)</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
