@@ -22,7 +22,7 @@ const MergeSort = () => {
     const [showGraph, setShowGraph] = useState(false);
     const [showReset, setShowReset] = useState(false);
 
-    const ANIMATION_SPEED_MS = 100;
+    const ANIMATION_SPEED_MS = 200;
     // This is the main color of the array bars.
     const PRIMARY_COLOR = 'turquoise';
     // This is the color of array bars that are being compared throughout the animations.
@@ -272,7 +272,7 @@ const MergeSort = () => {
                         <div className="controlButtons">
                             <button disabled={showReset} onClick={() => stepThrough(algoSteps, true)} className="greenButton" data-testid="sort-button">Sort</button>
                             <button disabled={showReset} onClick={() => stepThrough(algoSteps, false)} className="orangeButton" data-testid="step-button">Step</button>
-                            {showReset && <button onClick={resetArray} className="redButton">Reset</button>}
+                            {showReset && <button onClick={resetArray} className="redButton" data-testid="reset-button">Reset</button>}
                         </div>
                         <div className="content-container">
                             <div>

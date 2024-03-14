@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import SelectionSort from './SelectionSort';
+import {act} from 'react-test-renderer'
 
 describe('SelectionSort Component', () => {
     test('renders Selection Sort title', async () => {
@@ -46,15 +47,27 @@ describe('SelectionSort Component', () => {
         expect(selectArrayButton).toBeInTheDocument();
     });
 
-    test('clicking sort button triggers sortArray function', () => {
+    test('clicking sort button triggers sortArray function', async () => {
         render(
             <MemoryRouter>
-                <SelectionSort />
+                <SelectionSort/>
             </MemoryRouter>
         );
+
         const sortButton = screen.getByTestId('sort-button');
 
         fireEvent.click(sortButton);
+        // Wait for the sorting process to complete
+        await act(async () => {
+            await new Promise((resolve) => setTimeout(resolve, 300 * 4)); // Adjust the timeout based on your sorting duration
+        });
+        // Stop halfway, array should not be sorted
+        const findingText = screen.getByText(/min index/i);
+        expect(findingText).toBeInTheDocument();
+
+        const resetButton = screen.queryByTestId('reset-button');
+        expect(resetButton).not.toBeInTheDocument();
+
     });
 
     test('clicking step button triggers stepThroughSorting function', () => {
@@ -66,5 +79,11 @@ describe('SelectionSort Component', () => {
         const stepButton = screen.getByTestId('step-button');
 
         fireEvent.click(stepButton);
+        const startText = screen.getByText(/Running the array against Selection Sort.../i);
+        expect(startText).toBeInTheDocument();
+
+        fireEvent.click(stepButton);
+        const secondStep = screen.getByText(/Finding the minimum element in the unsorted region/i);
+        expect(secondStep).toBeInTheDocument();
     });
 });

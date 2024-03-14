@@ -194,7 +194,7 @@ const BubbleSort = () => {
                         <div className="bubbleControlButtons">
                             <button onClick={sortArrayFully} disabled={showReset} className="greenButton" data-testid="sort-button">Sort</button>
                             <button onClick={() => stepThroughSorting(false)} disabled={showReset} className="orangeButton" data-testid="step-button">Step</button>
-                            {showReset && <button onClick={resetArray} className="redButton">Reset</button>}
+                            {showReset && <button onClick={resetArray} className="redButton" data-testid="reset-button">Reset</button>}
                         </div>
                     </div>
                     <div className="infoSectionBubble">
