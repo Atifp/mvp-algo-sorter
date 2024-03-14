@@ -8,7 +8,6 @@ import SelectArray from '../components/arrayChoiceButtons/selectArray/selectArra
 import Description from '../components/Description/Description'
 import PseudoCodeMerge from '../components/PseudoCode/PseudoCodeMerge'
 import Tab from '../components/Tabs/Tab'
-import {Link} from 'react-router-dom'
 import ArrayVisualizer from '../components/ArrayVisualizer/ArrayVisualizer'
 import BackButton from '../components/buttons/backButton/backButton'
 
